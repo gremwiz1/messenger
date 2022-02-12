@@ -1,0 +1,104 @@
+.page {
+  max-width: 1280px;
+  min-width: 300px;
+  margin: auto;
+  min-height: 100vh;
+  font-family: "Inter", Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  min-height: 450px;
+}
+.form__top {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+.form__title {
+  text-align: center;
+  padding-top: 50px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 40px;
+  color: #1e1e1e;
+}
+.form__label {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  color: #999999;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.form__input {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #1e1e1e;
+  padding-bottom: 7px;
+  margin-bottom: 16px;
+  border: none;
+  border-bottom: 1px solid #3369f3;
+}
+.form__bottom {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.form__button {
+  height: 37px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3369f3;
+  border-radius: 8px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #ffffff;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: 1s;
+}
+.form__button:hover {
+  opacity: 0.7;
+}
+.form__link {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  color: #3369f3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 1s;
+}
+.form__link:hover {
+  opacity: 0.7;
+}
