@@ -1,0 +1,36 @@
+<html lang="ru">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../vendor/normalize.css" />
+    <link rel="stylesheet" href="../../vendor/fonts.css" />
+    <link rel="stylesheet" href="./popup.css" />
+    <title>Popup</title>
+  </head>
+
+  <body class="page">
+    <main class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Загрузите файл</h2>
+        <div class="input__wrapper">
+          <input
+            name="file"
+            type="file"
+            name="file"
+            id="input__file"
+            class="input input__file"
+            multiple
+          />
+          <label for="input__file" class="input__file-button">
+            <span class="input__file-button-text">Выбрать файл на компьютере</span>
+          </label>
+        </div>
+        <button class="popup__button">Поменять</button>
+        <span class="popup__error">Нужно выбрать файл</span>
+      </div>
+    </main>
+
+  </body>
+
+</html>
