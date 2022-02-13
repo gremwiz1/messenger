@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../vendor/normalize.css">
   <link rel="stylesheet" href="../../vendor/fonts.css">
-  <link rel="stylesheet" href="./profile.css">
+  <link rel="stylesheet" href="./change-profile.css">
   <title>Profile</title>
 </head>
 
@@ -16,7 +16,6 @@
     </section>
     <section class="profile__right">
       <div class="avatar"></div>
-      <p class="name">{{profile.profile.name}}</p>
       <form class="form" action="#">
         <div class="form__element">
           <label class="form__label">Почта</label>
@@ -44,18 +43,10 @@
         </div>
 
         <div class="form__bottom">
-          <div class="form__block">
-            <button class="form__button" type="submit">Изменить данные</button>
-          </div>
-          <div class="form__block">
-            <button class="form__button" type="button">Изменить пароль</button>
-          </div>
-
-          <a href="../login/login.hbs" class="form__link">Выйти</a>
+            <button class="form__button" type="submit">Сохранить</button>
         </div>
       </form>
     </section>
-
   </main>
 
 </body>
