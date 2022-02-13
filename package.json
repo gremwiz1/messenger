@@ -21,6 +21,7 @@
   "homepage": "https://github.com/gremwiz1/messenger#readme",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/config-default": "^2.3.0",
     "express": "^4.17.2",
     "parcel": "^2.3.1"
   },

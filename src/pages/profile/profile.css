@@ -1,0 +1,138 @@
+.page {
+  max-width: 1280px;
+  min-width: 300px;
+  margin: auto;
+  min-height: 100vh;
+  font-family: "Inter", Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background-color: #ffffff;
+  display: flex;
+}
+.profile {
+  display: flex;
+  width: 100%;
+}
+.profile__left {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+}
+.profile__left_link {
+  text-decoration: none;
+  height: 28px;
+  width: 28px;
+  background-image: url(../../../static/left-arrow.png);
+  background-size: cover;
+  cursor: pointer;
+  transition: 1s;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.profile__left_link:hover {
+  opacity: 0.7;
+}
+.profile__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.avatar {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  background: #efefef;
+  background-image: url(../../../static/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: 1s;
+}
+.avatar:hover {
+  opacity: 0.7;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form__element {
+  display: flex;
+  width: 510px;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+.form__label {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #1e1e1e;
+  margin: 0;
+  text-align: left;
+  margin-right: 5px;
+}
+.form__input {
+  border: none;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #999999;
+  width: 100%;
+}
+.form__bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.form__button {
+  border: none;
+  text-align: left;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #3369f3;
+  cursor: pointer;
+  margin-bottom: 21px;
+  transition: 1s;
+  background: none;
+  padding: 0;
+}
+.form__button:hover {
+  opacity: 0.7;
+}
+.form__block {
+  display: inline-block;
+}
+.form__link {
+  text-decoration: none;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: #ff0000;
+  text-align: left;
+  cursor: pointer;
+  transition: 1s;
+}
+.form__link:hover {
+  opacity: 0.7;
+}
