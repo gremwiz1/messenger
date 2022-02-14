@@ -1,0 +1,89 @@
+{
+  "chats": [
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Андрей",
+      "lastUserName": "",
+      "lastMessage": "Изображение",
+      "timeLastMessage": "10:49",
+      "isNewMessages": true,
+      "countNewMessages": 2
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Киноклуб",
+      "lastUserName": "Вы:",
+      "lastMessage": "стикер",
+      "timeLastMessage": "12:00",
+      "isNewMessages": false
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Илья",
+      "lastUserName": "",
+      "lastMessage": "Друзья, у меня для вас особенный выпуск новостей!",
+      "timeLastMessage": "15:12",
+      "isNewMessages": true,
+      "countNewMessages": 4
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Вадим",
+      "lastUserName": "Вы:",
+      "lastMessage": "Круто!",
+      "timeLastMessage": "Пт",
+      "isNewMessages": false
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Илья",
+      "lastUserName": "",
+      "lastMessage": "Друзья, у меня для вас особенный выпуск новостей!",
+      "timeLastMessage": "15:12",
+      "isNewMessages": true,
+      "countNewMessages": 4
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Вадим",
+      "lastUserName": "Вы:",
+      "lastMessage": "Круто!",
+      "timeLastMessage": "Пт",
+      "isNewMessages": false
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Илья",
+      "lastUserName": "",
+      "lastMessage": "Друзья, у меня для вас особенный выпуск новостей!",
+      "timeLastMessage": "15:12",
+      "isNewMessages": true,
+      "countNewMessages": 4
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Вадим",
+      "lastUserName": "Вы:",
+      "lastMessage": "Круто!",
+      "timeLastMessage": "Пт",
+      "isNewMessages": false
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Илья",
+      "lastUserName": "",
+      "lastMessage": "Друзья, у меня для вас особенный выпуск новостей!",
+      "timeLastMessage": "15:12",
+      "isNewMessages": true,
+      "countNewMessages": 4
+    },
+    {
+      "imageUrl": "../../static/logo.png",
+      "title": "Вадим",
+      "lastUserName": "Вы:",
+      "lastMessage": "Круто!",
+      "timeLastMessage": "Пт",
+      "isNewMessages": false
+    }
+  ]
+}
