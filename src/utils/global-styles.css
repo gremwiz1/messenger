@@ -3,6 +3,14 @@
 :root {
   --main-bg-color: #ffffff;
   --light-grey-color: #999999;
+  --avatar-bg-color: #efefef;
+  --dark-main-fonts-color: #1e1e1e;
+  --blue-button-color: #3369f3;
+  --red-error-color: #ff2f2f;
+  --red-link-color: #ff0000;
+  --chat-bg-active-color: #e4edfd;
+  --chat-bg-button-color: #f5f5f5;
+  --message-bg-color: #f8f8f8;
 }
 
 .page {

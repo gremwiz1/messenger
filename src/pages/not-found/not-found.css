@@ -13,7 +13,7 @@
   font-size: 40px;
   line-height: 40px;
   text-align: center;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
   margin: 0;
   margin-bottom: 20px;
 }
@@ -24,7 +24,7 @@
   font-size: 20px;
   line-height: 20px;
   text-align: center;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
   margin: 0;
   margin-bottom: 69px;
 }
@@ -35,7 +35,7 @@
   font-size: 11px;
   line-height: 11px;
   text-align: center;
-  color: #3369f3;
+  color: var(--blue-button-color);
   margin: 0;
   text-decoration: none;
   cursor: pointer;

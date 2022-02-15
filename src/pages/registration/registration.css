@@ -24,7 +24,7 @@
   line-height: 20px;
   margin: 0;
   margin-bottom: 40px;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
 }
 .form__label {
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -32,7 +32,7 @@
   font-weight: 500;
   font-size: 9px;
   line-height: 9px;
-  color: #999999;
+  color: var(--light-grey-color);
   margin-bottom: 7px;
   text-align: left;
 }
@@ -42,13 +42,13 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
   padding: 0;
   margin: 0;
   padding-bottom: 7px;
   margin-bottom: 16px;
   border: none;
-  border-bottom: 1px solid #3369f3;
+  border-bottom: 1px solid var(--blue-button-color);
   box-sizing: border-box;
 }
 .form__bottom {
@@ -62,14 +62,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #3369f3;
+  background: var(--blue-button-color);
   border-radius: 8px;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  color: #ffffff;
+  color: var(--main-bg-color);
   margin-bottom: 14px;
   cursor: pointer;
   transition: 1s;
@@ -83,7 +83,7 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 11px;
-  color: #3369f3;
+  color: var(--blue-button-color);
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -98,7 +98,7 @@
   font-weight: normal;
   font-size: 8px;
   line-height: 8px;
-  color: #ff2f2f;
+  color: var(--red-error-color);
   margin-bottom: 7px;
   margin-top: 7px;
 }

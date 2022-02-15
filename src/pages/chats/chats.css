@@ -12,7 +12,7 @@
   font-size: 12px;
   line-height: 12px;
   text-align: right;
-  color: #999999;
+  color: var(--light-grey-color);
   cursor: pointer;
   transition: 1s;
   padding-top: 21px;
@@ -22,7 +22,7 @@
   opacity: 0.7;
 }
 .section-left__search {
-  background: #efefef;
+  background: var(--avatar-bg-color);
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
-  color: #999999;
+  color: var(--light-grey-color);
 }
 .chats {
   width: 100%;
@@ -52,18 +52,18 @@
   padding-left: 10px;
   height: 71px;
   box-sizing: border-box;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid var(--border-color);
   cursor: pointer;
 }
 .chat:hover {
-  background: #e4edfd;
+  background: var(--chat-bg-active-color);
 }
 .chat__avatar {
   padding-top: 12px;
   padding-bottom: 12px;
   width: 47px;
   height: 47px;
-  background: #efefef;
+  background: var(--avatar-bg-color);
   border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
@@ -82,7 +82,7 @@
   font-weight: 600;
   font-size: 13px;
   line-height: 13px;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
   text-align: left;
   padding: 0;
   margin: 0;
@@ -99,7 +99,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: #1e1e1e;
+  color: var(--dark-main-fonts-color);
   text-align: left;
   margin: 0;
   display: inline-block;
@@ -110,7 +110,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: #999999;
+  color: var(--light-grey-color);
   text-align: left;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -131,14 +131,14 @@
   font-size: 9px;
   line-height: 13px;
   text-align: right;
-  color: #999999;
+  color: var(--light-grey-color);
   margin-bottom: 14px;
 }
 .chat__count-messages {
   height: 20px;
   width: 20px;
   margin-left: 3px;
-  background: #3369f3;
+  background: var(--blue-button-color);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -149,7 +149,7 @@
   font-size: 11px;
   line-height: 12px;
   text-align: center;
-  color: #ffffff;
+  color: var(--main-bg-color);
   margin: 0;
 }
 ::-webkit-scrollbar {
@@ -174,6 +174,6 @@
   font-size: 12px;
   line-height: 12px;
   text-align: center;
-  color: #999999;
+  color: var(--light-grey-color);
   margin: 0;
 }
