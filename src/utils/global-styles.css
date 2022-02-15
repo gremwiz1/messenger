@@ -1,0 +1,22 @@
+@import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
+:root {
+  --main-bg-color: #ffffff;
+  --light-grey-color: #999999;
+}
+
+.page {
+  max-width: 1280px;
+  min-width: 300px;
+  margin: auto;
+  min-height: 100vh;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background-color: var(--main-bg-color);
+  display: flex;
+}

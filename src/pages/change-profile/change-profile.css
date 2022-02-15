@@ -1,18 +1,4 @@
-.page {
-  max-width: 1280px;
-  min-width: 300px;
-  margin: auto;
-  min-height: 100vh;
-  font-family: "Inter", Arial, sans-serif;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
-  background-color: #ffffff;
-  display: flex;
-}
+@import url("../../utils/global-styles.css");
 .profile {
   display: flex;
   width: 100%;
@@ -93,7 +79,7 @@
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
-  color: #999999;
+  color: var(--light-grey-color);
   width: 100%;
 }
 .form__bottom {

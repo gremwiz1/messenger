@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../vendor/normalize.css" />
-    <link rel="stylesheet" href="../../vendor/fonts.css" />
     <link rel="stylesheet" href="./chat.css" />
     <title>Chats</title>
   </head>
@@ -49,7 +47,7 @@
         <button class="chat__top_button"></button>
       </div>
       <div class="content">
-        <p class="content__date">19 июня</p>
+        <time class="content__date">19 июня</time>
         {{#each chat.chat.messages}}
           {{#if isMyMessage}}
             <div class="content__container-right">{{textMessage}}
