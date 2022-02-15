@@ -7,7 +7,6 @@
   width: 100%;
 }
 .not-found__title {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 40px;
@@ -18,7 +17,6 @@
   margin-bottom: 20px;
 }
 .not-found__text {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -29,7 +27,6 @@
   margin-bottom: 69px;
 }
 .not-found__link {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;

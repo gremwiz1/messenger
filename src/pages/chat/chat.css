@@ -6,7 +6,6 @@
 }
 .section-left__link {
   text-decoration: none;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -32,7 +31,6 @@
   margin-right: 10px;
   border: none;
   height: 32px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -77,7 +75,6 @@
   padding-bottom: 12px;
 }
 .chat__title {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -94,7 +91,6 @@
   display: flex;
 }
 .chat__last-user-name {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -105,7 +101,6 @@
   display: inline-block;
 }
 .chat__last-message {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -125,7 +120,6 @@
   padding-right: 10px;
 }
 .chat__date {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 9px;
@@ -143,7 +137,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -193,7 +186,6 @@
   margin-bottom: 10px;
 }
 .chat__top_title {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -225,7 +217,6 @@
   height: calc(100vh-110px);
 }
 .content__date {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -237,7 +228,6 @@
 .content__container-right {
   max-width: 380px;
   background: var(--chat-bg-active-color);
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -262,7 +252,6 @@
   padding-right: 20px;
 }
 .content__time-right {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 9px;
@@ -276,7 +265,6 @@
 .content__container-left {
   max-width: 380px;
   background: var(--message-bg-color);
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -290,7 +278,6 @@
   margin-bottom: 21px;
 }
 .content__time-left {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 9px;
@@ -332,7 +319,6 @@
   height: 32px;
   border: none;
   padding-left: 20px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
