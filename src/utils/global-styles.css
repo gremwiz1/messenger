@@ -20,6 +20,7 @@
   margin: auto;
   min-height: 100vh;
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;

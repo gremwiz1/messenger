@@ -6,7 +6,6 @@
 }
 .section-left__link {
   text-decoration: none;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
@@ -31,7 +30,6 @@
   margin-right: 10px;
   border: none;
   height: 32px;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
@@ -75,7 +73,6 @@
   padding-bottom: 12px;
 }
 .chat__title {
-  font-style: normal;
   font-weight: 600;
   font-size: 13px;
   line-height: 13px;
@@ -91,7 +88,6 @@
   display: flex;
 }
 .chat__last-user-name {
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
@@ -101,7 +97,6 @@
   display: inline-block;
 }
 .chat__last-message {
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
@@ -120,7 +115,6 @@
   padding-right: 10px;
 }
 .chat__date {
-  font-style: normal;
   font-weight: 500;
   font-size: 9px;
   line-height: 13px;
@@ -137,7 +131,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 12px;
@@ -161,7 +154,6 @@
   width: 100%;
 }
 .section-right__text {
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;

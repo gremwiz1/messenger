@@ -7,7 +7,6 @@
   width: 100%;
 }
 .not-found__title {
-  font-style: normal;
   font-weight: 500;
   font-size: 40px;
   line-height: 40px;
@@ -17,7 +16,6 @@
   margin-bottom: 20px;
 }
 .not-found__text {
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 20px;
@@ -27,7 +25,6 @@
   margin-bottom: 69px;
 }
 .not-found__link {
-  font-style: normal;
   font-weight: 500;
   font-size: 11px;
   line-height: 11px;
