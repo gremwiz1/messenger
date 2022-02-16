@@ -1,0 +1,52 @@
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./change-profile.css">
+  <title>Change-profile</title>
+</head>
+
+<body class="page">
+  <main class="profile">
+    <section class="profile__left">
+      <a href="#" class="profile__left_link"></a>
+    </section>
+    <section class="profile__right">
+      <div class="avatar"></div>
+      <form class="form" action="#">
+        <div class="form__element">
+          <label class="form__label">Почта</label>
+          <input class="form__input" type="email" value={{profile.profile.email}} name="email" required></input>
+        </div>
+        <div class="form__element">
+          <label class="form__label">Логин</label>
+          <input class="form__input" type="text" value={{profile.profile.login}} name="login" required></input>
+        </div>
+        <div class="form__element">
+          <label class="form__label">Имя</label>
+          <input class="form__input" type="text" value={{profile.profile.name}} name="name" required></input>
+        </div>
+        <div class="form__element">
+          <label class="form__label">Фамилия</label>
+          <input class="form__input" type="text" value={{profile.profile.lastName}} name="lastName" required></input>
+        </div>
+        <div class="form__element">
+          <label class="form__label">Имя&nbsp;в&nbsp;чате</label>
+          <input class="form__input" type="text" value={{profile.profile.nickName}} name="nickName" required></input>
+        </div>
+        <div class="form__element">
+          <label class="form__label">Телефон</label>
+          <input class="form__input" type="text" value={{profile.profile.phone}} name="phone" required></input>
+        </div>
+
+        <div class="form__bottom">
+            <button class="form__button" type="submit">Сохранить</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+
+</html>

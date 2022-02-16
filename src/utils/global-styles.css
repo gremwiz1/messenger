@@ -1,0 +1,32 @@
+@import url("../vendor/normalize.css");
+@import url("../vendor/fonts.css");
+:root {
+  --main-bg-color: #ffffff;
+  --light-grey-color: #999999;
+  --avatar-bg-color: #efefef;
+  --dark-main-fonts-color: #1e1e1e;
+  --blue-button-color: #3369f3;
+  --red-error-color: #ff2f2f;
+  --red-link-color: #ff0000;
+  --chat-bg-active-color: #e4edfd;
+  --chat-bg-button-color: #f5f5f5;
+  --message-bg-color: #f8f8f8;
+  --border-color: #eaeaea;
+}
+
+.page {
+  max-width: 1280px;
+  min-width: 300px;
+  margin: auto;
+  min-height: 100vh;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  background-color: var(--main-bg-color);
+  display: flex;
+}

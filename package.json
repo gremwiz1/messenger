@@ -1,0 +1,28 @@
+{
+  "name": "messenger",
+  "version": "0.0.1",
+  "description": "---",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel --no-cache ./src/index.html -p 3000",
+    "build": "parcel build ./src/index.html",
+    "start": "npm run build && node ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gremwiz1/messenger.git"
+  },
+  "author": "Zotov Mikhail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gremwiz1/messenger/issues"
+  },
+  "homepage": "https://github.com/gremwiz1/messenger#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@parcel/config-default": "^2.3.0",
+    "express": "^4.17.2",
+    "parcel": "^2.3.1"
+  }
+}
