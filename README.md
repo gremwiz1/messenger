@@ -9,4 +9,4 @@
 
 В качестве макета использовался шаблоны от яндекс https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=1%3A103
 
-[Ссылка на пулл реквест](https://github.com/gremwiz1/messenger/pull/1/)
+[Ссылка на пулл реквест](https://github.com/gremwiz1/messenger/pull/2/)
