@@ -1,5 +1,5 @@
 type Tcallback = (...args: any) => void;
-class EventBus {
+export default class EventBus {
   listeners: { [key: string]: Tcallback[] };
   constructor() {
       this.listeners = {};
