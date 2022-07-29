@@ -64,11 +64,14 @@ class Block {
     }
 
   _componentDidUpdate(oldProps: any, newProps : any) {
-
+    const response = this.componentDidUpdate(oldProps, newProps);
+    if(response){
+        this._render();
+    }
   }
 
   componentDidUpdate(oldProps: any, newProps : any) {
-    return true;
+    return oldProps !== newProps;
   }
 
   setProps = (nextProps : any) => {
