@@ -1,18 +1,17 @@
 import Block from '../../utils/block';
-import template from './button.hbs';
 import './button.css';
 
-type ButtonProps ={
-  title: string;
-  events?: any;
+interface IButtonProps {
+  title: string,
+  events?: any
 }
-export class Button extends Block{
-
-  constructor(props: ButtonProps){
-      super('div', props);
+export class Button extends Block<IButtonProps> {
+  constructor({title, events}: IButtonProps) {
+    super({title, events});
   }
   render() {
-    return this.compile(template, {...this.props});
+   return `
+   <button class="form__button" type="submit">{{title}}</button>
+  `;
   }
-
 }

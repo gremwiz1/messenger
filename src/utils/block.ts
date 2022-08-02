@@ -1,20 +1,20 @@
 import EventBus from './event-bus';
 import { v4 as makeUUID } from 'uuid';
+import Handlebars from 'handlebars';
 
 // Нельзя создавать экземпляр данного класса
-class Block {
+abstract class Block<Props extends {}> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render"
   };
-
+props: Props;
   _element: HTMLElement
-  _meta: { tagName: string, props: any }
+  _meta: { props: any }
   eventBus: EventBus;
-  children: Record<string, Block>;
-  props: any;
+  children: Record<string, any>;
   _id: string;
   /** JSDoc
    * @param {string} tagName
@@ -22,17 +22,15 @@ class Block {
    *
    * @returns {void}
    */
-  constructor(tagName = "div", props = {}) {
+  constructor(propsWithChildren: any={}) {
 
-    this._meta = {
-      tagName,
-      props
-    };
     this._id = makeUUID();
-    this.props = this._makePropsProxy(props);
+
 
     this.eventBus = new EventBus();
-
+    const { props, children } = this._getChildren(propsWithChildren)
+    this.props = this._makePropsProxy(props);
+    this.children = children;
     this._registerEvents();
     this.eventBus.emit(Block.EVENTS.INIT);
   }
@@ -44,13 +42,9 @@ class Block {
     this.eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources(): void {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
+
 
   init(): void {
-    this._createResources();
     this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -88,16 +82,28 @@ class Block {
   }
 
   _render() {
-    const block: any = this.render();
+
     // Это небезопасный метод для упрощения логики
     // Используйте шаблонизатор из npm или напишите свой безопасный
     // Нужно компилировать не в строку (или делать это правильно),
     // либо сразу превращать в DOM-элементы и возвращать из compile DOM-ноду
-    this._element.appendChild(block);
+
+    const templateString = this.render();
+    const fragment = this.compile(templateString, { ...this.props });
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    if (this._element) {
+      this._removeEvents();
+      this._element.replaceWith(newElement);
+    }
+    this._element = newElement;
+    this._addEvents();
   }
 
   // Переопределяется пользователем. Необходимо вернуть разметку
-  render() { }
+  render(): string {
+    return '';
+  }
 
   getContent() {
     return this.element;
@@ -125,37 +131,25 @@ class Block {
       }
     });
   }
-  compile(template: (context: any) => string, props: any) {
-    const propsAndStubs = { ...props };
-    Object.entries(this.children).forEach(([key, child]) => {
-      propsAndStubs[key] = `<div data-id="id-${child._id}"></div>`;
-    });
-    const fragment = document.createElement('template') as HTMLTemplateElement;
-    fragment.innerHTML = template(propsAndStubs);
-    Object.values(this.children).forEach(child => {
-      const stub = fragment.content.querySelector(`[data-id="id-${child._id}"]`);
-      if (!stub) {
-        return
-      }
-      stub.replaceWith(child.getContent());
-    });
-    return fragment.content;
-  }
 
   _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
   _addEvents(): void {
-    const { events = {} } = this.props;
-
+    const { events } = this.props as Props;
+    if (!events) {
+      return;
+    }
     Object.keys(events).forEach(eventName => {
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
-  removeEvents(): void {
-    const { events = {} } = this.props;
-
+  _removeEvents(): void {
+    const { events } = this.props as Props;
+    if (!events) {
+      return;
+    }
     Object.keys(events).forEach((eventName) => {
       this.element.removeEventListener(eventName, events[eventName]);
     });
@@ -181,6 +175,21 @@ class Block {
 
     return { children, props };
   }
-}
+  compile(templateString: string, context: Record<string, any>) {
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
+    const template = Handlebars.compile(templateString);
 
+    fragment.innerHTML = template({ ...context, children: this.children });
+    Object.entries(this.children).forEach(([, child]) => {
+      const stub = fragment.content.querySelector(`[data-id="id-${child._id}"]`);
+
+      if (!stub) {
+        return;
+      }
+      stub.replaceWith(child.getContent()!);
+    });
+
+    return fragment.content;
+  }
+}
 export default Block;
