@@ -137,16 +137,17 @@ props: Props;
     return document.createElement(tagName);
   }
   _addEvents(): void {
-    const { events } = this.props as Props;
+    const events : Record<string, () => void> = (this.props as any).events;
     if (!events) {
       return;
     }
     Object.keys(events).forEach(eventName => {
       this._element.addEventListener(eventName, events[eventName]);
     });
+
   }
   _removeEvents(): void {
-    const { events } = this.props as Props;
+    const events : Record<string, () => void> = (this.props as any).events;
     if (!events) {
       return;
     }
