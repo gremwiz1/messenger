@@ -1,17 +1,16 @@
 import Block from '../../utils/block';
 import './button.css';
+import template from './button.hbs';
 
 interface IButtonProps {
   title: string,
   events?: any
 }
-export class Button extends Block<IButtonProps> {
+export class Button extends Block {
   constructor({title, events}: IButtonProps) {
-    super({title, events});
+    super('div', {title, events});
   }
   render() {
-   return `
-   <button class="form__button" type="submit">{{title}}</button>
-  `;
+    return this.compile(template,this.props);
   }
 }

@@ -1,0 +1,29 @@
+@import url("../../utils/global-styles.css");
+.form__element {
+  display: flex;
+  width: 510px;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.form__label {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--dark-main-fonts-color);
+  margin: 0;
+  text-align: left;
+  margin-right: 5px;
+}
+.form__input {
+  border: none;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--light-grey-color);
+  width: 100%;
+}

@@ -1,0 +1,12 @@
+@import url("../../utils/global-styles.css");
+.form__input {
+  border: none;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--light-grey-color);
+  width: 100%;
+}

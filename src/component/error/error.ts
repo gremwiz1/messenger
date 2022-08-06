@@ -1,5 +1,6 @@
 import Block from '../../utils/block';
 import './error.css';
+import template from './error.hbs';
 
 interface IErrorProps {
   code: string,
@@ -7,20 +8,11 @@ interface IErrorProps {
   linkText: string,
   link: string
 }
-export class Error extends Block<IErrorProps> {
+export class Error extends Block {
   constructor({code, text, linkText, link}: IErrorProps) {
-    super({code, text, linkText, link});
+    super('div',{code, text, linkText, link});
   }
   render() {
-   return `
-  <div class="page">
-    <main class="not-found">
-      <h1 class="not-found__title">{{code}}</h1>
-      <p class="not-found__text">{{text}}</p>
-      <a class="not-found__link" href="{{link}}">{{linkText}}</a>
-    </main>
-
-  </div>
-  `;
+   return this.compile(template,this.props);
   }
 }
