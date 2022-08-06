@@ -1,4 +1,14 @@
 <div class="form__element">
   <label class="form__label">{{ labelText }}</label>
-  <input class="{{classNameInput}}" id={{ idInput }} type="{{typeInput}}" value={{ valueInput }} name={{ nameInput }} placeholder={{ placeholderInput }} required></input>
-</div>
+  <input class="{{classNameInput}}"
+    id={{ idInput }}
+    type="{{typeInput}}"
+    {{#if valueInput }}
+    value={{ valueInput }}
+    {{/if}}
+  name={{ nameInput }}
+  {{#if placeholderInput }}
+  placeholder={{ placeholderInput }}
+  {{/if}}
+  required></input>
+</div >

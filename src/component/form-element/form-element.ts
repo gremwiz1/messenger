@@ -8,7 +8,7 @@ interface IFormElementProps {
   idInput: string,
   valueInput?: string,
   nameInput: string,
-  placeholderInput: string,
+  placeholderInput?: string,
   classNameInput: string
 }
 export class FormElement extends Block {

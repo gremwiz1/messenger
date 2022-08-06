@@ -15,9 +15,9 @@ interface IProfile {
   FormElement1: FormElement,
   FormElement2: FormElement,
   FormElement3: FormElement,
-  FormElement4: FormElement,
-  FormElement5: FormElement,
-  FormElement6: FormElement,
+  FormElement4?: FormElement,
+  FormElement5?: FormElement,
+  FormElement6?: FormElement,
   ButtonSubmit: Button,
   ButtonLink?: ButtonLink,
 }
