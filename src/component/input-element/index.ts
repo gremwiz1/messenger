@@ -1,0 +1,1 @@
+export { InputElement as default } from './input-element';
