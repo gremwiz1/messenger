@@ -1,6 +1,8 @@
 import FormElement from "../../component/form-element";
 import { renderBlock } from "../../utils/render-block";
 import  Profile  from "../../component/profile";
+import Button from "../../component/button";
+import ButtonLink from "../../component/button-link";
 
 let FormElement1 = new FormElement({
   idInput: "idEmail",
@@ -56,6 +58,12 @@ let FormElement6 = new FormElement({
   placeholderInput: "+71112223344",
   classNameInput: "form__input"
 });
+let ButtonSubmit = new Button({
+title: "Изменить данные"
+});
+let LinkButton = new ButtonLink({
+  title: "Изменить пароль"
+})
 const profile = new Profile({
   email: 'gremwiz@yandex.ru',
   login: 'gremwiz',
@@ -68,7 +76,9 @@ const profile = new Profile({
   FormElement3: FormElement3,
   FormElement4: FormElement4,
   FormElement5: FormElement5,
-  FormElement6: FormElement6
+  FormElement6: FormElement6,
+  ButtonSubmit: ButtonSubmit,
+  ButtonLink: LinkButton
 })
 
 renderBlock('#app', profile);

@@ -1,7 +1,9 @@
 import './profile.css';
 import Block from '../../utils/block';
 import template from './profile.hbs';
-import FormElement from '../../component/form-element';
+import FormElement from '../form-element';
+import Button from '../button';
+import ButtonLink from '../button-link';
 
 interface IProfile {
   email: string,
@@ -16,6 +18,8 @@ interface IProfile {
   FormElement4: FormElement,
   FormElement5: FormElement,
   FormElement6: FormElement,
+  ButtonSubmit: Button,
+  ButtonLink?: ButtonLink,
 }
 export class Profile extends Block {
   constructor(props: IProfile) {
