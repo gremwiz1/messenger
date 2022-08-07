@@ -4,7 +4,7 @@ import template from './input-element.hbs';
 
 interface IInputElementProps {
   labelText?: string,
-  typeInput: 'text' | 'email' | 'password',
+  typeInput: 'text' | 'email' | 'password' | 'tel',
   idInput: string,
   valueInput?: string,
   nameInput: string,

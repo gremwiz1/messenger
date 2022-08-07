@@ -1,5 +1,6 @@
-<label class="form__label">{{labelText}}</label>
-<input class="form__input"
+<div class="input-element">
+<label class="form1__label">{{labelText}}</label>
+<input class="form1__input"
   id={{ idInput }}
   type="{{typeInput}}"
   {{#if valueInput }}
@@ -12,5 +13,6 @@
   required>
 </input>
   {{#if spanId}}
-  <span class="form__error" id={{spanId}}></span>
+  <span class="form1__error" id={{spanId}}></span>
   {{/if}}
+</div>

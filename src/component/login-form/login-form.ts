@@ -9,6 +9,11 @@ interface ILoginForm {
   formTitle: string,
   InputElement1: InputElement,
   InputElement2: InputElement,
+  InputElement3?: InputElement,
+  InputElement4?: InputElement,
+  InputElement5?: InputElement,
+  InputElement6?: InputElement,
+  InputElement7?: InputElement,
   ButtonSubmit: Button,
   link: string,
   linkText: string

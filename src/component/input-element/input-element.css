@@ -1,5 +1,9 @@
 @import url("../../utils/global-styles.css");
-.form__label {
+.input-element {
+  display: flex;
+  flex-direction: column;
+}
+.form1__label {
   font-weight: 500;
   font-size: 9px;
   line-height: 9px;
@@ -7,7 +11,7 @@
   margin-bottom: 7px;
   text-align: left;
 }
-.form__input {
+.form1__input {
   font-weight: 500;
   font-size: 13px;
   line-height: 13px;
@@ -20,7 +24,7 @@
   border-bottom: 1px solid var(--blue-button-color);
   box-sizing: border-box;
 }
-.form__error {
+.form1__error {
   font-weight: normal;
   font-size: 8px;
   line-height: 8px;
