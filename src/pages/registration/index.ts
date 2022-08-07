@@ -57,7 +57,7 @@ let InputElement7 = new InputElement({
   nameInput: "passwordRepeat",
   spanId: "password-input-error"
 });
-const login = new LoginForm({
+const registration = new LoginForm({
   formTitle: 'Регистрация',
   InputElement1: InputElement1,
   InputElement2: InputElement2,
@@ -71,4 +71,4 @@ const login = new LoginForm({
   ButtonSubmit: ButtonSubmit
 })
 
-renderBlock('#app', login);
+renderBlock('#app', registration);

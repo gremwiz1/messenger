@@ -51,7 +51,6 @@
   font-size: 13px;
   line-height: 13px;
   color: var(--main-bg-color);
-  margin-top: 45px;
   cursor: pointer;
   transition: 1s;
 }
@@ -61,7 +60,7 @@
 .input__wrapper {
   width: 100%;
   position: relative;
-  margin: 15px 0;
+  margin: 15px 0 45px;
   text-align: center;
 }
 .input__file {
