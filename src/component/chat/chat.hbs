@@ -1,0 +1,17 @@
+<div class="chat">
+  <img class="chat__avatar" src="../{{imageUrl}}" />
+  <div class="chat__content">
+    <p class="chat__title">{{ title }}</p>
+    <div class="chat__last">
+      <p class="chat__last-user-name">{{ lastUserName }}&nbsp;<div
+        class="chat__last-message"
+      >{{ lastMessage }}</div></p>
+    </div>
+  </div>
+  <div class="chat__right">
+    <div class="chat__date">{{ timeLastMessage }}</div>
+    {{ #if isNewMessages }}
+    <p class="chat__count-messages">{{ countNewMessages }}</p>
+    {{/if}}
+  </div>
+</div>
