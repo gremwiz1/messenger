@@ -1,0 +1,59 @@
+.content__container-right {
+  max-width: 380px;
+  background: var(--chat-bg-active-color);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: left;
+  color: var(--dark-main-fonts-color);
+  margin-right: 20px;
+  align-self: end;
+  display: flex;
+  padding: 11px;
+  margin-bottom: 21px;
+}
+.content__check {
+  width: 4px;
+  height: 9px;
+  background: var(--chat-bg-active-color);
+  border-radius: 50%;
+  background-image: url("../../../static/check-view-message.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  align-self: end;
+  padding-right: 20px;
+}
+.content__time-right {
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  text-align: right;
+  color: var(--blue-button-color);
+  padding-left: 4px;
+  margin: 0;
+  align-self: end;
+}
+.content__container-left {
+  max-width: 380px;
+  background: var(--message-bg-color);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: left;
+  color: var(--dark-main-fonts-color);
+  margin-right: 20px;
+  align-self: start;
+  display: flex;
+  padding: 11px;
+  margin-bottom: 21px;
+}
+.content__time-left {
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  text-align: right;
+  color: var(--light-grey-color);
+  padding-left: 4px;
+  margin: 0;
+  align-self: end;
+}
