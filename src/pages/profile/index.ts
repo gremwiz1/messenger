@@ -62,7 +62,8 @@ let ButtonSubmit = new Button({
 title: "Изменить данные"
 });
 let LinkButton = new ButtonLink({
-  title: "Изменить пароль"
+  title: "Изменить пароль",
+  className: "form__button"
 })
 const profile = new Profile({
   email: 'gremwiz@yandex.ru',

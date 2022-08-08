@@ -10,3 +10,16 @@
   color: var(--light-grey-color);
   width: 100%;
 }
+.chat__bottom_input {
+  width: 100%;
+  background: var(--avatar-bg-color);
+  border-radius: 30px;
+  height: 32px;
+  border: none;
+  padding-left: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: letf;
+  color: var(--light-grey-color);
+}

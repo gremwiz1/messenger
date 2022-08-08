@@ -3,7 +3,8 @@ import { renderBlock } from "../../utils/render-block";
 import ButtonLink from "../../component/button-link";
 
 let Button = new ButtonLink({
-title: "Поменять"
+title: "Поменять",
+className: "form__button"
 });
 const popup = new Popup({
   Button: Button
