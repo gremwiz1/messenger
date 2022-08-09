@@ -1,12 +1,15 @@
-import EventBus from './event-bus';
-import { v4 as makeUUID } from 'uuid';
+import EventBus from "./event-bus";
+import { v4 as makeUUID } from "uuid";
 // Нельзя создавать экземпляр данного класса
 
 interface IBlock {
   init(): void;
   componentDidMount(): void;
   dispatchComponentDidMoun(): void;
-  componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>): boolean;
+  componentDidUpdate(
+    oldProps: Record<string, any>,
+    newProps: Record<string, any>
+  ): boolean;
   render(): void;
   setProps(nextProps: Record<string, any>): void;
   getContent(): HTMLElement;
@@ -22,8 +25,8 @@ export default class Block implements IBlock {
     FLOW_RENDER: "flow:render",
   };
   _data: {
-    tagName: string,
-    props: Record<string, any>
+    tagName: string;
+    props: Record<string, any>;
   };
   _id: string;
   _element: HTMLElement;
@@ -31,15 +34,17 @@ export default class Block implements IBlock {
   eventBus: () => EventBus;
   children: Record<string, Block>;
 
-  constructor(tagName: string = "div", propsAndChildren: Record<string, any> = {}) {
-
+  constructor(
+    tagName: string = "div",
+    propsAndChildren: Record<string, any> = {}
+  ) {
     const { children, props } = this._getChildren(propsAndChildren);
 
     this.children = children;
 
     this._data = {
       tagName,
-      props
+      props,
     };
 
     this._id = makeUUID();
@@ -52,12 +57,17 @@ export default class Block implements IBlock {
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
-  };
+  }
   _getChildren(propsAndChildren: Record<string, any>) {
     const children: Record<string, any> = {};
     const props: Record<string, any> = {};
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
+        children[key] = value;
+      } else if (
+        Array.isArray(value) &&
+        value.every((v) => v instanceof Block)
+      ) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -73,18 +83,18 @@ export default class Block implements IBlock {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-  };
+  }
   _createResources(): void {
     const { tagName } = this._data;
     this._element = this._createDocumentElement(tagName);
-  };
+  }
   _createDocumentElement(tagName: string): HTMLElement {
     return document.createElement(tagName);
-  };
+  }
   init(): void {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-  };
+  }
   _componentDidMount(): void {
     this.componentDidMount();
     Object.values(this.children).forEach((child: any) => {
@@ -94,26 +104,30 @@ export default class Block implements IBlock {
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
-  componentDidMount(): void {
-
-  }
+  componentDidMount(): void {}
   dispatchComponentDidMoun(): void {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
-  _componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>) {
+  _componentDidUpdate(
+    oldProps: Record<string, any>,
+    newProps: Record<string, any>
+  ) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
       this._render();
     }
   }
-  componentDidUpdate(oldProps: Record<string, any>, newProps: Record<string, any>): boolean {
+  componentDidUpdate(
+    oldProps: Record<string, any>,
+    newProps: Record<string, any>
+  ): boolean {
     return oldProps !== newProps;
   }
   setProps(nextProps: Record<string, any>): void {
     if (!nextProps) {
       return;
     }
-    Object.assign(this.props, nextProps)
+    Object.assign(this.props, nextProps);
   }
 
   get element() {
@@ -125,15 +139,15 @@ export default class Block implements IBlock {
     this._element.appendChild(block);
     this._addEvents();
   }
-  render() { }
+  render() {}
   _addEvents() {
     const { events = {} } = this.props;
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       if (this._element) {
-        if (eventName === 'blur') {
+        if (eventName === "blur") {
           const { children } = this._element;
           if (children !== undefined) {
-            const input = children[0].querySelector('input');
+            const input = children[0].querySelector("input");
             input?.addEventListener(eventName, events[eventName]);
           }
         } else {
@@ -145,12 +159,12 @@ export default class Block implements IBlock {
   _deleteEvents() {
     const { events = {} } = this.props;
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       if (this._element) {
-        if (eventName === 'blur') {
+        if (eventName === "blur") {
           const { children } = this._element;
           if (children !== undefined) {
-            const input = children[0]?.querySelector('input');
+            const input = children[0]?.querySelector("input");
             input?.removeEventListener(eventName, events[eventName]);
           }
         } else {
@@ -166,13 +180,15 @@ export default class Block implements IBlock {
       propsAndStubs[key] = `<div data-id="id-${child._id}"></div>`;
     });
 
-    const fragment = document.createElement('template') as HTMLTemplateElement;
+    const fragment = document.createElement("template") as HTMLTemplateElement;
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach(child => {
-      const stub = fragment.content.querySelector(`[data-id="id-${child._id}"]`);
+    Object.values(this.children).forEach((child) => {
+      const stub = fragment.content.querySelector(
+        `[data-id="id-${child._id}"]`
+      );
       if (!stub) {
-        return
+        return;
       }
 
       stub.replaceWith(child.getContent());
@@ -183,14 +199,13 @@ export default class Block implements IBlock {
   _makePropsProxy(props: Record<string, any>): Record<string, any> {
     const self = this;
     return new Proxy(props, {
-
       get(target, prop: string) {
         const value = target[prop];
-        return (typeof value === 'function') ? value.bind(target) : value;
+        return typeof value === "function" ? value.bind(target) : value;
       },
 
       set(target, prop: string, value) {
-        if (prop.startsWith('_')) {
+        if (prop.startsWith("_")) {
           throw new Error("Нет прав");
         }
         target[prop] = value;
@@ -199,9 +214,8 @@ export default class Block implements IBlock {
       },
 
       deleteProperty() {
-        throw new Error('Нет прав');
+        throw new Error("Нет прав");
       },
-
     });
   }
   getContent() {
@@ -213,5 +227,4 @@ export default class Block implements IBlock {
   hide() {
     this.getContent().remove();
   }
-
 }

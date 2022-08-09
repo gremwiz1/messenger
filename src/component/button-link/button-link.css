@@ -44,3 +44,19 @@
 .chat__bottom_link:hover {
   opacity: 0.7;
 }
+.chat__top_button {
+  width: 25px;
+  height: 25px;
+  background: var(--chat-bg-button-color);
+  border-radius: 50%;
+  background-image: url("../../../static/button-chat.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 1s;
+}
+.chat__top_button:hover {
+  opacity: 0.7;
+}

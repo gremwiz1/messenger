@@ -3,7 +3,7 @@ import './button-link.css';
 import template from './button-link.hbs';
 
 interface IButtonProps {
-  title: string,
+  title?: string,
   className: string,
   events?: any
 }
@@ -12,6 +12,7 @@ export class ButtonLink extends Block {
     super('div', {title, events, className});
   }
   render() {
+    console.log('render buttonLink');
     return this.compile(template,this.props);
   }
 }

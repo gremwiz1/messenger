@@ -11,7 +11,6 @@
   width: 100%;
 }
 .chat__bottom_input {
-  width: 100%;
   background: var(--avatar-bg-color);
   border-radius: 30px;
   height: 32px;
@@ -20,6 +19,24 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 12px;
-  text-align: letf;
+  text-align: left;
   color: var(--light-grey-color);
+  width: calc(100vw - 550px);
+}
+.section-left__search {
+  background: var(--avatar-bg-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: none;
+  height: 32px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--light-grey-color);
+  width: 100%;
 }

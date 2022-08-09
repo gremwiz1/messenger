@@ -1,3 +1,9 @@
-<input class="{{classNameInput}}" type="{{typeInput}}" id={{ idInput }}
+<input class="{{classNameInput}}"
+type="{{typeInput}}"
+id={{ idInput }}
+  {{#if valueInput }}
   value={{ valueInput }}
-  name="{{nameInput}}" placeholder={{ placeholderInput }} required></input>
+  {{/if}}
+  name="{{nameInput}}"
+  placeholder={{ placeholderInput }}
+  required></input>
