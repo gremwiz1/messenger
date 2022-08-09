@@ -41,5 +41,6 @@ const chatPage = new ChatPage({
   ButtonLink3: ButtonLink3,
   date: date,
   messages: chatMessages,
+  chatPage: true,
 });
 renderBlock("#app", chatPage);

@@ -23,34 +23,39 @@
       {{/each}}
     </div>
   </section>
-  <section class="section-right">
-    <div class="chat__top">
-      <div class="chat__top_left">
-        <img class="chat__top_avatar" src={{imageUrlChat}} />
-        <p class="chat__top_title">{{titleChat}}</p>
+  {{#if chatPage}}
+    <section class="section-right">
+      <div class="chat__top">
+        <div class="chat__top_left">
+          <img class="chat__top_avatar" src={{imageUrlChat}} />
+          <p class="chat__top_title">{{titleChat}}</p>
+        </div>
+        {{{ButtonLink1}}}
       </div>
-      {{{ButtonLink1}}}
-    </div>
-    <div class="content">
-      <time class="content__date">{{date}}</time>
-      {{#each messages}}
-        {{#if isMyMessage}}
-          <div class="content__container-right">{{textMessage}}
-            <div class="content__check"></div>
-            <p class="content__time-right">{{timeMessage}}</p>
-          </div>
-        {{else}}
-          <div class="content__container-left">{{textMessage}}
-            <p class="content__time-left">{{timeMessage}}</p>
-          </div>
-        {{/if}}
-      {{/each}}
-    </div>
-    <div class="chat__bottom">
-      {{{ButtonLink2}}}
-      {{{Input2}}}
-      {{{ButtonLink3}}}
-    </div>
-  </section>
-
+      <div class="content">
+        <time class="content__date">{{date}}</time>
+        {{#each messages}}
+          {{#if isMyMessage}}
+            <div class="content__container-right">{{textMessage}}
+              <div class="content__check"></div>
+              <p class="content__time-right">{{timeMessage}}</p>
+            </div>
+          {{else}}
+            <div class="content__container-left">{{textMessage}}
+              <p class="content__time-left">{{timeMessage}}</p>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+      <div class="chat__bottom">
+        {{{ButtonLink2}}}
+        {{{Input2}}}
+        {{{ButtonLink3}}}
+      </div>
+    </section>
+  {{else}}
+    <section class="section-rightCenter">
+      <p class="section-right__text">Выберите чат чтобы отправить сообщение</p>
+    </section>
+  {{/if}}
 </main>

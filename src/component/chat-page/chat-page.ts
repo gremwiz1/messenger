@@ -21,15 +21,16 @@ interface IChatMessages {
 }
 interface IChatPage {
   Input1: Input;
-  Input2: Input;
+  Input2?: Input;
   chats: IChat[];
-  imageUrlChat: string;
-  titleChat: string;
-  ButtonLink1: ButtonLink;
-  ButtonLink2: ButtonLink;
-  ButtonLink3: ButtonLink;
-  date: string;
-  messages: IChatMessages[];
+  imageUrlChat?: string;
+  titleChat?: string;
+  ButtonLink1?: ButtonLink;
+  ButtonLink2?: ButtonLink;
+  ButtonLink3?: ButtonLink;
+  date?: string;
+  messages?: IChatMessages[];
+  chatPage: Boolean;
 }
 export class ChatPage extends Block {
   constructor(props: IChatPage) {

@@ -329,3 +329,17 @@
 .chat__bottom_button:hover {
   opacity: 0.7;
 }
+.section-right__text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  color: var(--light-grey-color);
+  margin: 0;
+}
+.section-rightCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
