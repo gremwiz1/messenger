@@ -2,6 +2,7 @@ import FormElement from "../../component/form-element";
 import { renderBlock } from "../../utils/render-block";
 import Profile from "../../component/profile";
 import Button from "../../component/button";
+import { checkRepeatPassword, passwordValidate } from "../../utils/validate";
 
 let FormElement1 = new FormElement({
   idInput: "idPassword",
@@ -16,6 +17,16 @@ let FormElement2 = new FormElement({
   labelText: "Новый пароль",
   nameInput: "newPassword",
   classNameInput: "form__input",
+  spanId: "new-password-error",
+  errorText: "Некорректный пароль",
+  events: {
+    blur: function () {
+      const error = document.getElementById("new-password-error");
+      if (error) {
+        error.hidden = passwordValidate(this.value) || this.value === "";
+      }
+    },
+  },
 });
 let FormElement3 = new FormElement({
   typeInput: "password",
@@ -23,6 +34,21 @@ let FormElement3 = new FormElement({
   labelText: "Повторите новый пароль",
   nameInput: "repeatPassword",
   classNameInput: "form__input",
+  spanId: "repeat-new-password-error",
+  errorText: "Пароли не совпадают",
+  events: {
+    blur: function () {
+      const error = document.getElementById("repeat-new-password-error");
+      const passwordInput = document.getElementById(
+        "idNewPassword"
+      ) as HTMLInputElement;
+      const password = passwordInput.value;
+      if (error) {
+        error.hidden =
+          checkRepeatPassword(this.value, password) || this.value === "";
+      }
+    },
+  },
 });
 let ButtonSubmit = new Button({
   title: "Сохранить",

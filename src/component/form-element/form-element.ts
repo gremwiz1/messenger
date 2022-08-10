@@ -10,8 +10,11 @@ interface IFormElementProps {
   nameInput: string;
   placeholderInput?: string;
   classNameInput: string;
+  spanId?: string;
+  errorText?: string;
   events?: {
     click?: (e?: Event) => void;
+    blur?: (e?: Event) => void;
   };
 }
 export class FormElement extends Block {
@@ -24,6 +27,8 @@ export class FormElement extends Block {
     placeholderInput,
     classNameInput,
     events,
+    spanId,
+    errorText,
   }: IFormElementProps) {
     super("div", {
       labelText,
@@ -34,6 +39,8 @@ export class FormElement extends Block {
       placeholderInput,
       classNameInput,
       events,
+      spanId,
+      errorText,
     });
   }
   render() {
