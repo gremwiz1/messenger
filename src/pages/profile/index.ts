@@ -1,6 +1,6 @@
 import FormElement from "../../component/form-element";
 import { renderBlock } from "../../utils/render-block";
-import  Profile  from "../../component/profile";
+import Profile from "../../component/profile";
 import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
 
@@ -11,7 +11,7 @@ let FormElement1 = new FormElement({
   nameInput: "email",
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
-  typeInput: 'email'
+  typeInput: "email",
 });
 let FormElement2 = new FormElement({
   typeInput: "text",
@@ -20,7 +20,7 @@ let FormElement2 = new FormElement({
   valueInput: "gremwiz",
   nameInput: "login",
   placeholderInput: "Введите логин",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement3 = new FormElement({
   typeInput: "text",
@@ -29,7 +29,7 @@ let FormElement3 = new FormElement({
   valueInput: "Михаил",
   nameInput: "firstName",
   placeholderInput: "Введите имя",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement4 = new FormElement({
   typeInput: "text",
@@ -38,7 +38,7 @@ let FormElement4 = new FormElement({
   valueInput: "Зотов",
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement5 = new FormElement({
   typeInput: "text",
@@ -47,7 +47,7 @@ let FormElement5 = new FormElement({
   valueInput: "Mike",
   nameInput: "nickName",
   placeholderInput: "Введите имя в чате",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement6 = new FormElement({
   typeInput: "text",
@@ -56,22 +56,28 @@ let FormElement6 = new FormElement({
   valueInput: "+70021234567",
   nameInput: "phone",
   placeholderInput: "+71112223344",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let ButtonSubmit = new Button({
-title: "Изменить данные"
+  title: "Изменить данные",
+  events: {
+    click: handleClickEditProfile,
+  },
 });
 let LinkButton = new ButtonLink({
   title: "Изменить пароль",
-  className: "form__button"
-})
+  className: "form__button",
+  events: {
+    click: handleClickChangePassword,
+  },
+});
 const profile = new Profile({
-  email: 'gremwiz@yandex.ru',
-  login: 'gremwiz',
-  firstName: 'Михаил',
-  secondName: 'Зотов',
-  nickName: 'Mike',
-  phone: '+79921234567',
+  email: "gremwiz@yandex.ru",
+  login: "gremwiz",
+  firstName: "Михаил",
+  secondName: "Зотов",
+  nickName: "Mike",
+  phone: "+79921234567",
   FormElement1: FormElement1,
   FormElement2: FormElement2,
   FormElement3: FormElement3,
@@ -79,7 +85,26 @@ const profile = new Profile({
   FormElement5: FormElement5,
   FormElement6: FormElement6,
   ButtonSubmit: ButtonSubmit,
-  ButtonLink: LinkButton
-})
+  ButtonLink: LinkButton,
+});
+function handleClickEditProfile(e: Event) {
+  e.preventDefault();
+  const formData = new FormData(
+    document.querySelector("form") as HTMLFormElement
+  );
+  const data = {
+    email: formData.get("email"),
+    login: formData.get("login"),
+    first_name: formData.get("firstName"),
+    second_name: formData.get("secondName"),
+    nick_name: formData.get("nickName"),
+    phone: formData.get("phone"),
+  };
 
-renderBlock('#app', profile);
+  console.log(data);
+}
+function handleClickChangePassword(e: Event) {
+  e.preventDefault();
+  window.location.href = "/pages/change-password/index.html";
+}
+renderBlock("#app", profile);

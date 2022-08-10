@@ -1,64 +1,64 @@
-import  LoginForm  from "../../component/login-form";
+import LoginForm from "../../component/login-form";
 import { renderBlock } from "../../utils/render-block";
 import Button from "../../component/button";
-import InputElement from "../../component/input-element"
+import InputElement from "../../component/input-element";
 
 let ButtonSubmit = new Button({
-title: "Зарегистрироваться"
+  title: "Зарегистрироваться",
 });
 let InputElement1 = new InputElement({
   labelText: "Почта",
-  typeInput: 'email',
+  typeInput: "email",
   idInput: "idEmail",
   nameInput: "email",
   spanId: "email-input-error",
-  placeholderInput: "pochta@yandex.ru"
+  placeholderInput: "pochta@yandex.ru",
 });
 let InputElement2 = new InputElement({
   labelText: "Логин",
-  typeInput: 'text',
+  typeInput: "text",
   idInput: "idLoginRegistration",
   nameInput: "login",
-  spanId: "login-input-error"
+  spanId: "login-input-error",
 });
 let InputElement3 = new InputElement({
   labelText: "Имя",
-  typeInput: 'text',
+  typeInput: "text",
   idInput: "idFirstName",
   nameInput: "firstName",
   spanId: "firstName-input-error",
-  placeholderInput: "Имя"
+  placeholderInput: "Имя",
 });
 let InputElement4 = new InputElement({
   labelText: "Фамилия",
-  typeInput: 'text',
+  typeInput: "text",
   idInput: "idSecondName",
   nameInput: "secondName",
   spanId: "secondName-input-error",
-  placeholderInput: "Фамилия"
+  placeholderInput: "Фамилия",
 });
 let InputElement5 = new InputElement({
   labelText: "Телефон",
-  typeInput: 'tel',
+  typeInput: "tel",
   idInput: "idPhone",
   nameInput: "phone",
-  spanId: "phone-input-error"
+  spanId: "phone-input-error",
 });
 let InputElement6 = new InputElement({
   labelText: "Пароль",
-  typeInput: 'password',
+  typeInput: "password",
   idInput: "idPassword",
-  nameInput: "password"
+  nameInput: "password",
 });
 let InputElement7 = new InputElement({
   labelText: "Пароль (еще раз)",
-  typeInput: 'password',
+  typeInput: "password",
   idInput: "idPasswordRepeat",
   nameInput: "passwordRepeat",
-  spanId: "password-input-error"
+  spanId: "password-input-error",
 });
 const registration = new LoginForm({
-  formTitle: 'Регистрация',
+  formTitle: "Регистрация",
   InputElement1: InputElement1,
   InputElement2: InputElement2,
   InputElement3: InputElement3,
@@ -68,7 +68,7 @@ const registration = new LoginForm({
   InputElement7: InputElement7,
   link: "../login/index.html",
   linkText: "Войти",
-  ButtonSubmit: ButtonSubmit
-})
+  ButtonSubmit: ButtonSubmit,
+});
 
-renderBlock('#app', registration);
+renderBlock("#app", registration);

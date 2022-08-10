@@ -1,6 +1,6 @@
 import FormElement from "../../component/form-element";
 import { renderBlock } from "../../utils/render-block";
-import  Profile  from "../../component/profile";
+import Profile from "../../component/profile";
 import Button from "../../component/button";
 
 let FormElement1 = new FormElement({
@@ -10,7 +10,7 @@ let FormElement1 = new FormElement({
   nameInput: "email",
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
-  typeInput: 'email'
+  typeInput: "email",
 });
 let FormElement2 = new FormElement({
   typeInput: "text",
@@ -19,7 +19,7 @@ let FormElement2 = new FormElement({
   valueInput: "gremwiz",
   nameInput: "login",
   placeholderInput: "Введите логин",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement3 = new FormElement({
   typeInput: "text",
@@ -28,7 +28,7 @@ let FormElement3 = new FormElement({
   valueInput: "Михаил",
   nameInput: "firstName",
   placeholderInput: "Введите имя",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement4 = new FormElement({
   typeInput: "text",
@@ -37,7 +37,7 @@ let FormElement4 = new FormElement({
   valueInput: "Зотов",
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement5 = new FormElement({
   typeInput: "text",
@@ -46,7 +46,7 @@ let FormElement5 = new FormElement({
   valueInput: "Mike",
   nameInput: "nickName",
   placeholderInput: "Введите имя в чате",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let FormElement6 = new FormElement({
   typeInput: "text",
@@ -55,25 +55,25 @@ let FormElement6 = new FormElement({
   valueInput: "+70021234567",
   nameInput: "phone",
   placeholderInput: "+71112223344",
-  classNameInput: "form__input"
+  classNameInput: "form__input",
 });
 let ButtonSubmit = new Button({
-title: "Сохранить"
+  title: "Сохранить",
 });
 const profile = new Profile({
-  email: 'gremwiz@yandex.ru',
-  login: 'gremwiz',
-  firstName: 'Михаил',
-  secondName: 'Зотов',
-  nickName: 'Mike',
-  phone: '+79921234567',
+  email: "gremwiz@yandex.ru",
+  login: "gremwiz",
+  firstName: "Михаил",
+  secondName: "Зотов",
+  nickName: "Mike",
+  phone: "+79921234567",
   FormElement1: FormElement1,
   FormElement2: FormElement2,
   FormElement3: FormElement3,
   FormElement4: FormElement4,
   FormElement5: FormElement5,
   FormElement6: FormElement6,
-  ButtonSubmit: ButtonSubmit
-})
+  ButtonSubmit: ButtonSubmit,
+});
 
-renderBlock('#app', profile);
+renderBlock("#app", profile);

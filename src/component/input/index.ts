@@ -1,1 +1,1 @@
-export { Input as default } from './input';
+export { Input as default } from "./input";
