@@ -59,6 +59,9 @@ let FormElement6 = new FormElement({
 });
 let ButtonSubmit = new Button({
   title: "Сохранить",
+  events: {
+    click: handleClickSubmitEditProfile,
+  },
 });
 const profile = new Profile({
   email: "gremwiz@yandex.ru",
@@ -75,5 +78,20 @@ const profile = new Profile({
   FormElement6: FormElement6,
   ButtonSubmit: ButtonSubmit,
 });
+function handleClickSubmitEditProfile(e: Event) {
+  e.preventDefault();
+  const formData = new FormData(
+    document.querySelector("form") as HTMLFormElement
+  );
+  const data = {
+    email: formData.get("email"),
+    login: formData.get("login"),
+    first_name: formData.get("firstName"),
+    second_name: formData.get("secondName"),
+    nick_name: formData.get("nickName"),
+    phone: formData.get("phone"),
+  };
 
+  console.log(data);
+}
 renderBlock("#app", profile);

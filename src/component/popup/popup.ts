@@ -11,7 +11,6 @@ export class Popup extends Block {
     super("div", { ...props });
   }
   render() {
-    console.log("render popup");
     return this.compile(template, this.props);
   }
 }

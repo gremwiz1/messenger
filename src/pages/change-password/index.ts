@@ -26,18 +26,28 @@ let FormElement3 = new FormElement({
 });
 let ButtonSubmit = new Button({
   title: "Сохранить",
+  events: {
+    click: handleClickSubmitChangePassword,
+  },
 });
 const profile = new Profile({
-  email: "gremwiz@yandex.ru",
-  login: "gremwiz",
   firstName: "Михаил",
-  secondName: "Зотов",
-  nickName: "Mike",
-  phone: "+79921234567",
   FormElement1: FormElement1,
   FormElement2: FormElement2,
   FormElement3: FormElement3,
   ButtonSubmit: ButtonSubmit,
 });
+function handleClickSubmitChangePassword(e: Event) {
+  e.preventDefault();
+  const formData = new FormData(
+    document.querySelector("form") as HTMLFormElement
+  );
+  const data = {
+    password: formData.get("password"),
+    newPassword: formData.get("newPassword"),
+    repeatPassword: formData.get("repeatPassword"),
+  };
 
+  console.log(data);
+}
 renderBlock("#app", profile);

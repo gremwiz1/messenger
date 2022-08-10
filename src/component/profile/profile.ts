@@ -6,12 +6,12 @@ import Button from "../button";
 import ButtonLink from "../button-link";
 
 interface IProfile {
-  email: string;
-  login: string;
+  email?: string;
+  login?: string;
   firstName: string;
-  secondName: string;
-  nickName: string;
-  phone: string;
+  secondName?: string;
+  nickName?: string;
+  phone?: string;
   FormElement1: FormElement;
   FormElement2: FormElement;
   FormElement3: FormElement;
@@ -29,7 +29,6 @@ export class Profile extends Block {
     super("div", { ...props });
   }
   render() {
-    console.log("render profile");
     return this.compile(template, this.props);
   }
 }

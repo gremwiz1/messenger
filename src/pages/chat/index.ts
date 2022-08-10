@@ -3,6 +3,7 @@ import { renderBlock } from "../../utils/render-block";
 import Input from "../../component/input";
 import ButtonLink from "../../component/button-link";
 import { dataChats, chatMessages, imageUrlChat } from "../../utils/mock-data";
+import { checkMessage } from "../../utils/validate";
 
 let Input1 = new Input({
   typeInput: "text",
@@ -29,6 +30,9 @@ const ButtonLink2 = new ButtonLink({
 });
 const ButtonLink3 = new ButtonLink({
   className: "chat__bottom_button",
+  events: {
+    click: handleClickSendMessage,
+  },
 });
 const chatPage = new ChatPage({
   Input1: Input1,
@@ -43,4 +47,15 @@ const chatPage = new ChatPage({
   messages: chatMessages,
   chatPage: true,
 });
+function handleClickSendMessage(e: Event) {
+  e.preventDefault();
+  const messageInput = document.getElementById("idMessage") as HTMLInputElement;
+  let messageText = messageInput.value;
+  if (checkMessage(messageText)) {
+    console.log(`message: ${messageText}`);
+    messageInput.value = "";
+  } else {
+    console.log("Message не может быть пустым");
+  }
+}
 renderBlock("#app", chatPage);

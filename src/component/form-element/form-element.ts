@@ -37,7 +37,6 @@ export class FormElement extends Block {
     });
   }
   render() {
-    console.log("render form-element");
     return this.compile(template, this.props);
   }
 }

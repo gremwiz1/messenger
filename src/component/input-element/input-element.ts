@@ -10,8 +10,10 @@ interface IInputElementProps {
   nameInput: string;
   placeholderInput?: string;
   spanId?: string;
+  errorText?: string;
   events?: {
     click?: (e?: Event) => void;
+    blur?: (e?: Event) => void;
   };
 }
 export class InputElement extends Block {
@@ -24,6 +26,7 @@ export class InputElement extends Block {
     placeholderInput,
     spanId,
     events,
+    errorText,
   }: IInputElementProps) {
     super("div", {
       labelText,
@@ -34,10 +37,10 @@ export class InputElement extends Block {
       placeholderInput,
       spanId,
       events,
+      errorText,
     });
   }
   render() {
-    console.log("render input-element");
     return this.compile(template, this.props);
   }
 }

@@ -22,7 +22,6 @@ export class LoginForm extends Block {
     super("div", { ...props });
   }
   render() {
-    console.log("render login-form");
     return this.compile(template, this.props);
   }
 }

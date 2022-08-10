@@ -14,7 +14,6 @@ export class ButtonLink extends Block {
     super("div", { title, events, className });
   }
   render() {
-    console.log("render buttonLink");
     return this.compile(template, this.props);
   }
 }

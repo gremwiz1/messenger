@@ -5,6 +5,9 @@ import InputElement from "../../component/input-element";
 
 let ButtonSubmit = new Button({
   title: "Авторизироваться",
+  events: {
+    click: handleClickSubmitAutorization,
+  },
 });
 let InputElement1 = new InputElement({
   labelText: "Логин",
@@ -28,5 +31,17 @@ const login = new LoginForm({
   linkText: "Нет аккаунта?",
   ButtonSubmit: ButtonSubmit,
 });
+function handleClickSubmitAutorization(e: Event) {
+  e.preventDefault();
+  const formData = new FormData(
+    document.querySelector("form") as HTMLFormElement
+  );
+  const data = {
+    login: formData.get("login"),
+    password: formData.get("password"),
+  };
+
+  console.log(data);
+}
 
 renderBlock("#app", login);

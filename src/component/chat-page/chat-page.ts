@@ -37,7 +37,6 @@ export class ChatPage extends Block {
     super("div", props);
   }
   render() {
-    console.log("render chatPage");
     return this.compile(template, this.props);
   }
 }

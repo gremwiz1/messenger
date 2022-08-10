@@ -25,7 +25,6 @@ export class Input extends Block {
     });
   }
   render() {
-    console.log("render input");
     return this.compile(Template, this.props);
   }
 }
