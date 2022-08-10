@@ -12,6 +12,7 @@ let FormElement1 = new FormElement({
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
   typeInput: "email",
+  readonly: true,
 });
 let FormElement2 = new FormElement({
   typeInput: "text",
@@ -21,6 +22,7 @@ let FormElement2 = new FormElement({
   nameInput: "login",
   placeholderInput: "Введите логин",
   classNameInput: "form__input",
+  readonly: true,
 });
 let FormElement3 = new FormElement({
   typeInput: "text",
@@ -30,6 +32,7 @@ let FormElement3 = new FormElement({
   nameInput: "firstName",
   placeholderInput: "Введите имя",
   classNameInput: "form__input",
+  readonly: true,
 });
 let FormElement4 = new FormElement({
   typeInput: "text",
@@ -39,6 +42,7 @@ let FormElement4 = new FormElement({
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
   classNameInput: "form__input",
+  readonly: true,
 });
 let FormElement5 = new FormElement({
   typeInput: "text",
@@ -48,6 +52,7 @@ let FormElement5 = new FormElement({
   nameInput: "nickName",
   placeholderInput: "Введите имя в чате",
   classNameInput: "form__input",
+  readonly: true,
 });
 let FormElement6 = new FormElement({
   typeInput: "text",
@@ -57,6 +62,7 @@ let FormElement6 = new FormElement({
   nameInput: "phone",
   placeholderInput: "+71112223344",
   classNameInput: "form__input",
+  readonly: true,
 });
 let ButtonSubmit = new Button({
   title: "Изменить данные",
@@ -89,19 +95,7 @@ const profile = new Profile({
 });
 function handleClickEditProfile(e: Event) {
   e.preventDefault();
-  const formData = new FormData(
-    document.querySelector("form") as HTMLFormElement
-  );
-  const data = {
-    email: formData.get("email"),
-    login: formData.get("login"),
-    first_name: formData.get("firstName"),
-    second_name: formData.get("secondName"),
-    nick_name: formData.get("nickName"),
-    phone: formData.get("phone"),
-  };
-
-  console.log(data);
+  window.location.href = "/pages/change-profile/index.html";
 }
 function handleClickChangePassword(e: Event) {
   e.preventDefault();

@@ -10,12 +10,17 @@
   {{#if placeholderInput }}
   placeholder={{ placeholderInput }}
   {{/if}}
-  required></input>
-  {{#if spanId}}
-  <span class="form1__error" id={{spanId}}>
-    {{#if errorText}}
-    {{ errorText}}
-    {{/if}}
-  </span>
+  {{#if readonly }}
+  readonly
+  {{else}}
+  required
+  {{/if}}>
+</input>
+{{#if spanId }}
+<span class="form1__error" id={{ spanId }}>
+  {{#if errorText }}
+  {{ errorText }}
   {{/if}}
+</span>
+{{/if}}
 </div >

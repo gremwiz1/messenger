@@ -12,6 +12,7 @@ interface IFormElementProps {
   classNameInput: string;
   spanId?: string;
   errorText?: string;
+  readonly?: boolean;
   events?: {
     click?: (e?: Event) => void;
     blur?: (e?: Event) => void;
@@ -29,6 +30,7 @@ export class FormElement extends Block {
     events,
     spanId,
     errorText,
+    readonly,
   }: IFormElementProps) {
     super("div", {
       labelText,
@@ -41,6 +43,7 @@ export class FormElement extends Block {
       events,
       spanId,
       errorText,
+      readonly,
     });
   }
   render() {

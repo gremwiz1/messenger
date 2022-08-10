@@ -2,6 +2,13 @@ import FormElement from "../../component/form-element";
 import { renderBlock } from "../../utils/render-block";
 import Profile from "../../component/profile";
 import Button from "../../component/button";
+import {
+  emailValidate,
+  firstNameValidate,
+  loginValidate,
+  phoneValidate,
+  secondNameValidate,
+} from "../../utils/validate";
 
 let FormElement1 = new FormElement({
   idInput: "idEmail",
@@ -11,6 +18,18 @@ let FormElement1 = new FormElement({
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
   typeInput: "email",
+  spanId: "email-input-error",
+  errorText: "Некорректный адрес почты",
+  events: {
+    blur: function () {
+      const error = document.getElementById("email-input-error");
+      const inputEmail = document.getElementById("idEmail") as HTMLInputElement;
+      const inputEmailValue = inputEmail.value;
+      if (error) {
+        error.hidden = emailValidate(inputEmailValue) || inputEmailValue === "";
+      }
+    },
+  },
 });
 let FormElement2 = new FormElement({
   typeInput: "text",
@@ -20,6 +39,18 @@ let FormElement2 = new FormElement({
   nameInput: "login",
   placeholderInput: "Введите логин",
   classNameInput: "form__input",
+  spanId: "login-input-error",
+  errorText: "Некорректный логин",
+  events: {
+    blur: function () {
+      const error = document.getElementById("login-input-error");
+      const inputLogin = document.getElementById("idLogin") as HTMLInputElement;
+      const inputLoginValue = inputLogin.value;
+      if (error) {
+        error.hidden = loginValidate(inputLoginValue) || inputLoginValue === "";
+      }
+    },
+  },
 });
 let FormElement3 = new FormElement({
   typeInput: "text",
@@ -29,6 +60,21 @@ let FormElement3 = new FormElement({
   nameInput: "firstName",
   placeholderInput: "Введите имя",
   classNameInput: "form__input",
+  spanId: "firstName-input-error",
+  errorText: "Некорректное имя",
+  events: {
+    blur: function () {
+      const error = document.getElementById("firstName-input-error");
+      const inputFirstName = document.getElementById(
+        "idFirstName"
+      ) as HTMLInputElement;
+      const inputFirstNameValue = inputFirstName.value;
+      if (error) {
+        error.hidden =
+          firstNameValidate(inputFirstNameValue) || inputFirstNameValue === "";
+      }
+    },
+  },
 });
 let FormElement4 = new FormElement({
   typeInput: "text",
@@ -38,6 +84,22 @@ let FormElement4 = new FormElement({
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
   classNameInput: "form__input",
+  spanId: "secondName-input-error",
+  errorText: "Некорректная фамилия",
+  events: {
+    blur: function () {
+      const error = document.getElementById("secondName-input-error");
+      const inputSecondName = document.getElementById(
+        "idSecondName"
+      ) as HTMLInputElement;
+      const inputSecondNameValue = inputSecondName.value;
+      if (error) {
+        error.hidden =
+          secondNameValidate(inputSecondNameValue) ||
+          inputSecondNameValue === "";
+      }
+    },
+  },
 });
 let FormElement5 = new FormElement({
   typeInput: "text",
@@ -56,6 +118,18 @@ let FormElement6 = new FormElement({
   nameInput: "phone",
   placeholderInput: "+71112223344",
   classNameInput: "form__input",
+  spanId: "phone-input-error",
+  errorText: "Неправильный номер телефона",
+  events: {
+    blur: function () {
+      const error = document.getElementById("phone-input-error");
+      const inputPhone = document.getElementById("idPhone") as HTMLInputElement;
+      const inputPhoneValue = inputPhone.value;
+      if (error) {
+        error.hidden = phoneValidate(inputPhoneValue) || inputPhoneValue === "";
+      }
+    },
+  },
 });
 let ButtonSubmit = new Button({
   title: "Сохранить",
@@ -95,3 +169,9 @@ function handleClickSubmitEditProfile(e: Event) {
   console.log(data);
 }
 renderBlock("#app", profile);
+const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
+  ".form1__error"
+) as NodeListOf<HTMLElement>;
+Array.from(allErrors).forEach((error) => {
+  error.hidden = true;
+});

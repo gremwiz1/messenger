@@ -77,3 +77,9 @@ function handleClickSubmitChangePassword(e: Event) {
   console.log(data);
 }
 renderBlock("#app", profile);
+const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
+  ".form1__error"
+) as NodeListOf<HTMLElement>;
+Array.from(allErrors).forEach((error) => {
+  error.hidden = true;
+});
