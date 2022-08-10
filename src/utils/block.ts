@@ -141,21 +141,36 @@ export default class Block implements IBlock {
   }
   render() {}
   _addEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
-    if (!events) {
-      return;
-    }
-    Object.entries(events).forEach(([event, listener]) => {
-      this._element!.addEventListener(event, listener);
+    const { events = {} } = this.props;
+    Object.keys(events).forEach((eventName) => {
+      if (this._element) {
+        if (eventName === "blur") {
+          const { children } = this._element;
+          if (children !== undefined) {
+            const input = children[0].querySelector("input");
+            input?.addEventListener(eventName, events[eventName]);
+          }
+        } else {
+          this._element.addEventListener(eventName, events[eventName]);
+        }
+      }
     });
   }
   _deleteEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
-    if (!events || !this._element) {
-      return;
-    }
-    Object.entries(events).forEach(([event, listener]) => {
-      this._element!.removeEventListener(event, listener);
+    const { events = {} } = this.props;
+
+    Object.keys(events).forEach((eventName) => {
+      if (this._element) {
+        if (eventName === "blur") {
+          const { children } = this._element;
+          if (children !== undefined) {
+            const input = children[0]?.querySelector("input");
+            input?.removeEventListener(eventName, events[eventName]);
+          }
+        } else {
+          this._element.removeEventListener(eventName, events[eventName]);
+        }
+      }
     });
   }
   compile(template: (context: any) => string, props: any) {
