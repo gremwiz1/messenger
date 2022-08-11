@@ -24,12 +24,12 @@ export default class Block implements IBlock {
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render",
   };
-  _data: {
+  private _data: {
     tagName: string;
     props: Record<string, any>;
   };
-  _id: string;
-  _element: HTMLElement;
+  private _id: string;
+  private _element: HTMLElement;
   props: Record<string, any>;
   eventBus: () => EventBus;
   children: Record<string, Block>;
@@ -58,7 +58,8 @@ export default class Block implements IBlock {
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
   }
-  _getChildren(propsAndChildren: Record<string, any>) {
+
+  private _getChildren(propsAndChildren: Record<string, any>) {
     const children: Record<string, any> = {};
     const props: Record<string, any> = {};
     Object.entries(propsAndChildren).forEach(([key, value]) => {
@@ -78,37 +79,46 @@ export default class Block implements IBlock {
       props,
     };
   }
-  _registerEvents(eventBus: EventBus): void {
+
+  private _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
-  _createResources(): void {
+
+  private _createResources(): void {
     const { tagName } = this._data;
     this._element = this._createDocumentElement(tagName);
   }
-  _createDocumentElement(tagName: string): HTMLElement {
+
+  private _createDocumentElement(tagName: string): HTMLElement {
     return document.createElement(tagName);
   }
+
   init(): void {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
-  _componentDidMount(): void {
+
+  private _componentDidMount(): void {
     this.componentDidMount();
     Object.values(this.children).forEach((child: any) => {
       child.dispatchComponentDidMount();
     });
   }
+
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
+
   componentDidMount(): void {}
+
   dispatchComponentDidMoun(): void {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
-  _componentDidUpdate(
+
+  private _componentDidUpdate(
     oldProps: Record<string, any>,
     newProps: Record<string, any>
   ) {
@@ -117,12 +127,14 @@ export default class Block implements IBlock {
       this._render();
     }
   }
+
   componentDidUpdate(
     oldProps: Record<string, any>,
     newProps: Record<string, any>
   ): boolean {
     return oldProps !== newProps;
   }
+
   setProps(nextProps: Record<string, any>): void {
     if (!nextProps) {
       return;
@@ -133,14 +145,16 @@ export default class Block implements IBlock {
   get element() {
     return this._element;
   }
-  _render() {
+  private _render() {
     const block: any = this.render();
     this._deleteEvents();
     this._element.appendChild(block);
     this._addEvents();
   }
+
   render() {}
-  _addEvents() {
+
+  private _addEvents() {
     const { events = {} } = this.props;
     Object.keys(events).forEach((eventName) => {
       if (this._element) {
@@ -156,7 +170,8 @@ export default class Block implements IBlock {
       }
     });
   }
-  _deleteEvents() {
+
+  private _deleteEvents() {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
@@ -173,6 +188,7 @@ export default class Block implements IBlock {
       }
     });
   }
+
   compile(template: (context: any) => string, props: any) {
     const propsAndStubs = { ...props };
 
@@ -196,7 +212,8 @@ export default class Block implements IBlock {
 
     return fragment.content;
   }
-  _makePropsProxy(props: Record<string, any>): Record<string, any> {
+
+  private _makePropsProxy(props: Record<string, any>): Record<string, any> {
     const self = this;
     return new Proxy(props, {
       get(target, prop: string) {
@@ -218,12 +235,15 @@ export default class Block implements IBlock {
       },
     });
   }
+
   getContent() {
     return this.element;
   }
+
   show() {
     this.getContent().style.display = "block";
   }
+
   hide() {
     this.getContent().remove();
   }

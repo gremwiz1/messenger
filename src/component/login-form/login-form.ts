@@ -6,13 +6,13 @@ import Button from "../button";
 
 interface ILoginForm {
   formTitle: string;
-  InputElement1: InputElement;
-  InputElement2: InputElement;
-  InputElement3?: InputElement;
-  InputElement4?: InputElement;
-  InputElement5?: InputElement;
-  InputElement6?: InputElement;
-  InputElement7?: InputElement;
+  InputEmail?: InputElement;
+  InputLogin: InputElement;
+  InputFirstName?: InputElement;
+  InputSecondName?: InputElement;
+  InputPhone?: InputElement;
+  InputPassword: InputElement;
+  InputRepeatPassword?: InputElement;
   ButtonSubmit: Button;
   link: string;
   linkText: string;

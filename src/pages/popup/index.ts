@@ -6,6 +6,7 @@ let Button = new ButtonLink({
   title: "Поменять",
   className: "form__button",
 });
+
 const popup = new Popup({
   Button: Button,
 });

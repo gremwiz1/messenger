@@ -1,19 +1,10 @@
+import { queryStringify } from "./query-stringify";
+
 enum Methods {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
   DELETE = "DELETE",
-}
-
-/**
- * Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
- * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
- * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
- */
-function queryStringify(data: XMLHttpRequestBodyInit) {
-  return `?${Object.entries(data)
-    .map((obj) => `${obj[0]}=${obj[1]}`)
-    .join("&")}`;
 }
 
 interface IOptions {

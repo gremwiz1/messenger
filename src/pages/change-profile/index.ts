@@ -10,7 +10,7 @@ import {
   secondNameValidate,
 } from "../../utils/validate";
 
-let FormElement1 = new FormElement({
+let FormElementEmail = new FormElement({
   idInput: "idEmail",
   labelText: "Email",
   valueInput: "gremwiz@yandex.ru",
@@ -31,7 +31,8 @@ let FormElement1 = new FormElement({
     },
   },
 });
-let FormElement2 = new FormElement({
+
+let FormElementLogin = new FormElement({
   typeInput: "text",
   idInput: "idLogin",
   labelText: "Логин",
@@ -52,7 +53,8 @@ let FormElement2 = new FormElement({
     },
   },
 });
-let FormElement3 = new FormElement({
+
+let FormElementFirstName = new FormElement({
   typeInput: "text",
   idInput: "idFirstName",
   labelText: "Имя",
@@ -76,7 +78,8 @@ let FormElement3 = new FormElement({
     },
   },
 });
-let FormElement4 = new FormElement({
+
+let FormElementSecondName = new FormElement({
   typeInput: "text",
   idInput: "idSecondName",
   labelText: "Фамилия",
@@ -101,7 +104,8 @@ let FormElement4 = new FormElement({
     },
   },
 });
-let FormElement5 = new FormElement({
+
+let FormElementNickName = new FormElement({
   typeInput: "text",
   idInput: "idNickName",
   labelText: "Имя в чате",
@@ -110,7 +114,8 @@ let FormElement5 = new FormElement({
   placeholderInput: "Введите имя в чате",
   classNameInput: "form__input",
 });
-let FormElement6 = new FormElement({
+
+let FormElementPhone = new FormElement({
   typeInput: "text",
   idInput: "idPhone",
   labelText: "Телефон",
@@ -131,12 +136,29 @@ let FormElement6 = new FormElement({
     },
   },
 });
+
 let ButtonSubmit = new Button({
   title: "Сохранить",
   events: {
-    click: handleClickSubmitEditProfile,
+    click: function (e: Event) {
+      e.preventDefault();
+      const formData = new FormData(
+        document.querySelector("form") as HTMLFormElement
+      );
+      const data = {
+        email: formData.get("email"),
+        login: formData.get("login"),
+        first_name: formData.get("firstName"),
+        second_name: formData.get("secondName"),
+        nick_name: formData.get("nickName"),
+        phone: formData.get("phone"),
+      };
+
+      console.log(data);
+    },
   },
 });
+
 const profile = new Profile({
   email: "gremwiz@yandex.ru",
   login: "gremwiz",
@@ -144,31 +166,17 @@ const profile = new Profile({
   secondName: "Зотов",
   nickName: "Mike",
   phone: "+79921234567",
-  FormElement1: FormElement1,
-  FormElement2: FormElement2,
-  FormElement3: FormElement3,
-  FormElement4: FormElement4,
-  FormElement5: FormElement5,
-  FormElement6: FormElement6,
+  FormElementEmail: FormElementEmail,
+  FormElementLogin: FormElementLogin,
+  FormElementFirstName: FormElementFirstName,
+  FormElementSecondName: FormElementSecondName,
+  FormElementNickName: FormElementNickName,
+  FormElementPhone: FormElementPhone,
   ButtonSubmit: ButtonSubmit,
 });
-function handleClickSubmitEditProfile(e: Event) {
-  e.preventDefault();
-  const formData = new FormData(
-    document.querySelector("form") as HTMLFormElement
-  );
-  const data = {
-    email: formData.get("email"),
-    login: formData.get("login"),
-    first_name: formData.get("firstName"),
-    second_name: formData.get("secondName"),
-    nick_name: formData.get("nickName"),
-    phone: formData.get("phone"),
-  };
 
-  console.log(data);
-}
 renderBlock("#app", profile);
+
 const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
   ".form1__error"
 ) as NodeListOf<HTMLElement>;

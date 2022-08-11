@@ -1,7 +1,7 @@
 <main class="page">
   <section class="section-left">
     <a class="section-left__link">Профиль ></a>
-    {{{Input1}}}
+    {{{InputSearch}}}
     <div class="chats">
       {{#each chats}}
         <div class="chat">
@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="chat__right">
-            <div class="chat__date">{{timeLastMessage}}</div>
+            <time class="chat__date">{{timeLastMessage}}</time>
             {{#if isNewMessages}}
               <p class="chat__count-messages">{{countNewMessages}}</p>
             {{/if}}
@@ -27,7 +27,7 @@
     <section class="section-right">
       <div class="chat__top">
         <div class="chat__top_left">
-          <img class="chat__top_avatar" src={{imageUrlChat}} />
+          <img class="chat__top_avatar" src={{imageUrlChat}} alt="Аватар" />
           <p class="chat__top_title">{{titleChat}}</p>
         </div>
         {{{ButtonLink1}}}
@@ -49,7 +49,7 @@
       </div>
       <div class="chat__bottom">
         {{{ButtonLink2}}}
-        {{{Input2}}}
+        {{{InputMessage}}}
         {{{ButtonLink3}}}
       </div>
     </section>

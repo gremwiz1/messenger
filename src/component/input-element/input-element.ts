@@ -17,28 +17,8 @@ interface IInputElementProps {
   };
 }
 export class InputElement extends Block {
-  constructor({
-    labelText,
-    typeInput,
-    idInput,
-    valueInput,
-    nameInput,
-    placeholderInput,
-    spanId,
-    events,
-    errorText,
-  }: IInputElementProps) {
-    super("div", {
-      labelText,
-      typeInput,
-      idInput,
-      valueInput,
-      nameInput,
-      placeholderInput,
-      spanId,
-      events,
-      errorText,
-    });
+  constructor(props: IInputElementProps) {
+    super("div", props);
   }
   render() {
     return this.compile(template, this.props);

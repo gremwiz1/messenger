@@ -15,10 +15,27 @@ import {
 let ButtonSubmit = new Button({
   title: "Зарегистрироваться",
   events: {
-    click: handleClickSubmitRegistration,
+    click: function (e: Event) {
+      e.preventDefault();
+      const formData = new FormData(
+        document.querySelector("form") as HTMLFormElement
+      );
+      const data = {
+        email: formData.get("email"),
+        login: formData.get("login"),
+        first_name: formData.get("firstName"),
+        second_name: formData.get("secondName"),
+        password: formData.get("password"),
+        phone: formData.get("phone"),
+        password_repeat: formData.get("passwordRepeat"),
+      };
+
+      console.log(data);
+    },
   },
 });
-let InputElement1 = new InputElement({
+
+let InputEmail = new InputElement({
   labelText: "Почта",
   typeInput: "email",
   idInput: "idEmail",
@@ -35,7 +52,8 @@ let InputElement1 = new InputElement({
     },
   },
 });
-let InputElement2 = new InputElement({
+
+let InputLogin = new InputElement({
   labelText: "Логин",
   typeInput: "text",
   idInput: "idLoginRegistration",
@@ -51,7 +69,8 @@ let InputElement2 = new InputElement({
     },
   },
 });
-let InputElement3 = new InputElement({
+
+let InputFirstName = new InputElement({
   labelText: "Имя",
   typeInput: "text",
   idInput: "idFirstName",
@@ -68,7 +87,8 @@ let InputElement3 = new InputElement({
     },
   },
 });
-let InputElement4 = new InputElement({
+
+let InputSecondName = new InputElement({
   labelText: "Фамилия",
   typeInput: "text",
   idInput: "idSecondName",
@@ -85,7 +105,8 @@ let InputElement4 = new InputElement({
     },
   },
 });
-let InputElement5 = new InputElement({
+
+let InputPhone = new InputElement({
   labelText: "Телефон",
   typeInput: "tel",
   idInput: "idPhone",
@@ -101,7 +122,8 @@ let InputElement5 = new InputElement({
     },
   },
 });
-let InputElement6 = new InputElement({
+
+let InputPassword = new InputElement({
   labelText: "Пароль",
   typeInput: "password",
   idInput: "idPassword",
@@ -117,7 +139,8 @@ let InputElement6 = new InputElement({
     },
   },
 });
-let InputElement7 = new InputElement({
+
+let InputRepeatPassword = new InputElement({
   labelText: "Пароль (еще раз)",
   typeInput: "password",
   idInput: "idPasswordRepeat",
@@ -138,37 +161,23 @@ let InputElement7 = new InputElement({
     },
   },
 });
+
 const registration = new LoginForm({
   formTitle: "Регистрация",
-  InputElement1: InputElement1,
-  InputElement2: InputElement2,
-  InputElement3: InputElement3,
-  InputElement4: InputElement4,
-  InputElement5: InputElement5,
-  InputElement6: InputElement6,
-  InputElement7: InputElement7,
+  InputEmail: InputEmail,
+  InputLogin: InputLogin,
+  InputFirstName: InputFirstName,
+  InputSecondName: InputSecondName,
+  InputPhone: InputPhone,
+  InputPassword: InputPassword,
+  InputRepeatPassword: InputRepeatPassword,
   link: "../login/index.html",
   linkText: "Войти",
   ButtonSubmit: ButtonSubmit,
 });
-function handleClickSubmitRegistration(e: Event) {
-  e.preventDefault();
-  const formData = new FormData(
-    document.querySelector("form") as HTMLFormElement
-  );
-  const data = {
-    email: formData.get("email"),
-    login: formData.get("login"),
-    first_name: formData.get("firstName"),
-    second_name: formData.get("secondName"),
-    password: formData.get("password"),
-    phone: formData.get("phone"),
-    password_repeat: formData.get("passwordRepeat"),
-  };
 
-  console.log(data);
-}
 renderBlock("#app", registration);
+
 const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
   ".form1__error"
 ) as NodeListOf<HTMLElement>;

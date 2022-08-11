@@ -12,12 +12,15 @@ interface IProfile {
   secondName?: string;
   nickName?: string;
   phone?: string;
-  FormElement1: FormElement;
-  FormElement2: FormElement;
-  FormElement3: FormElement;
-  FormElement4?: FormElement;
-  FormElement5?: FormElement;
-  FormElement6?: FormElement;
+  FormElementEmail?: FormElement;
+  FormElementLogin?: FormElement;
+  FormElementFirstName?: FormElement;
+  FormElementSecondName?: FormElement;
+  FormElementNickName?: FormElement;
+  FormElementPhone?: FormElement;
+  FormOldPassword?: FormElement;
+  FormNewPassword?: FormElement;
+  FormRepeatPassword?: FormElement;
   ButtonSubmit: Button;
   ButtonLink?: ButtonLink;
   events?: {

@@ -9,8 +9,8 @@ interface IErrorProps {
   link: string;
 }
 export class Error extends Block {
-  constructor({ code, text, linkText, link }: IErrorProps) {
-    super("div", { code, text, linkText, link });
+  constructor(props: IErrorProps) {
+    super("div", props);
   }
   render() {
     return this.compile(template, this.props);

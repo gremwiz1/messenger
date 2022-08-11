@@ -19,32 +19,8 @@ interface IFormElementProps {
   };
 }
 export class FormElement extends Block {
-  constructor({
-    labelText,
-    typeInput,
-    idInput,
-    valueInput,
-    nameInput,
-    placeholderInput,
-    classNameInput,
-    events,
-    spanId,
-    errorText,
-    readonly,
-  }: IFormElementProps) {
-    super("div", {
-      labelText,
-      typeInput,
-      idInput,
-      valueInput,
-      nameInput,
-      placeholderInput,
-      classNameInput,
-      events,
-      spanId,
-      errorText,
-      readonly,
-    });
+  constructor(props: IFormElementProps) {
+    super("div", props);
   }
   render() {
     return this.compile(template, this.props);

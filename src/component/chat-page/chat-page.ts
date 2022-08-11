@@ -20,8 +20,8 @@ interface IChatMessages {
   dateMessage: string;
 }
 interface IChatPage {
-  Input1: Input;
-  Input2?: Input;
+  InputSearch: Input;
+  InputMessage?: Input;
   chats: IChat[];
   imageUrlChat?: string;
   titleChat?: string;

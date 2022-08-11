@@ -4,7 +4,7 @@ import Profile from "../../component/profile";
 import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
 
-let FormElement1 = new FormElement({
+let FormElementEmail = new FormElement({
   idInput: "idEmail",
   labelText: "Email",
   valueInput: "gremwiz@yandex.ru",
@@ -14,7 +14,8 @@ let FormElement1 = new FormElement({
   typeInput: "email",
   readonly: true,
 });
-let FormElement2 = new FormElement({
+
+let FormElementLogin = new FormElement({
   typeInput: "text",
   idInput: "idLogin",
   labelText: "Логин",
@@ -24,7 +25,8 @@ let FormElement2 = new FormElement({
   classNameInput: "form__input",
   readonly: true,
 });
-let FormElement3 = new FormElement({
+
+let FormElementFirstName = new FormElement({
   typeInput: "text",
   idInput: "idFirstName",
   labelText: "Имя",
@@ -34,7 +36,8 @@ let FormElement3 = new FormElement({
   classNameInput: "form__input",
   readonly: true,
 });
-let FormElement4 = new FormElement({
+
+let FormElementSecondName = new FormElement({
   typeInput: "text",
   idInput: "idSecondName",
   labelText: "Фамилия",
@@ -44,7 +47,8 @@ let FormElement4 = new FormElement({
   classNameInput: "form__input",
   readonly: true,
 });
-let FormElement5 = new FormElement({
+
+let FormElementNickName = new FormElement({
   typeInput: "text",
   idInput: "idNickName",
   labelText: "Имя в чате",
@@ -54,7 +58,8 @@ let FormElement5 = new FormElement({
   classNameInput: "form__input",
   readonly: true,
 });
-let FormElement6 = new FormElement({
+
+let FormElementPhone = new FormElement({
   typeInput: "text",
   idInput: "idPhone",
   labelText: "Телефон",
@@ -64,19 +69,28 @@ let FormElement6 = new FormElement({
   classNameInput: "form__input",
   readonly: true,
 });
+
 let ButtonSubmit = new Button({
   title: "Изменить данные",
   events: {
-    click: handleClickEditProfile,
+    click: function (e: Event) {
+      e.preventDefault();
+      window.location.href = "/pages/change-profile/index.html";
+    },
   },
 });
+
 let LinkButton = new ButtonLink({
   title: "Изменить пароль",
   className: "form__button",
   events: {
-    click: handleClickChangePassword,
+    click: function (e: Event) {
+      e.preventDefault();
+      window.location.href = "/pages/change-password/index.html";
+    },
   },
 });
+
 const profile = new Profile({
   email: "gremwiz@yandex.ru",
   login: "gremwiz",
@@ -84,21 +98,14 @@ const profile = new Profile({
   secondName: "Зотов",
   nickName: "Mike",
   phone: "+79921234567",
-  FormElement1: FormElement1,
-  FormElement2: FormElement2,
-  FormElement3: FormElement3,
-  FormElement4: FormElement4,
-  FormElement5: FormElement5,
-  FormElement6: FormElement6,
+  FormElementEmail: FormElementEmail,
+  FormElementLogin: FormElementLogin,
+  FormElementFirstName: FormElementFirstName,
+  FormElementSecondName: FormElementSecondName,
+  FormElementNickName: FormElementNickName,
+  FormElementPhone: FormElementPhone,
   ButtonSubmit: ButtonSubmit,
   ButtonLink: LinkButton,
 });
-function handleClickEditProfile(e: Event) {
-  e.preventDefault();
-  window.location.href = "/pages/change-profile/index.html";
-}
-function handleClickChangePassword(e: Event) {
-  e.preventDefault();
-  window.location.href = "/pages/change-password/index.html";
-}
+
 renderBlock("#app", profile);

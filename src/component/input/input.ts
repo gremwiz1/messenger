@@ -10,19 +10,13 @@ interface IInputProps {
   placeholderInput: string;
   classNameInput: string;
   events?: {
-    focus: Function;
-    blur: Function;
+    focus?: Function;
+    blur?: Function;
   };
 }
 export class Input extends Block {
   constructor(props: IInputProps) {
-    super("div", {
-      ...props,
-      events: {
-        focus: () => console.log("focus"),
-        blur: () => console.log("blur"),
-      },
-    });
+    super("div", props);
   }
   render() {
     return this.compile(Template, this.props);

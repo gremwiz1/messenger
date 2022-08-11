@@ -10,8 +10,8 @@ interface IButtonProps {
   };
 }
 export class ButtonLink extends Block {
-  constructor({ title, events, className }: IButtonProps) {
-    super("div", { title, events, className });
+  constructor(props: IButtonProps) {
+    super("div", props);
   }
   render() {
     return this.compile(template, this.props);
