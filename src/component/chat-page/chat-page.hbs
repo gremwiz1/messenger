@@ -1,0 +1,61 @@
+<main class="page">
+  <section class="section-left">
+    <a class="section-left__link">Профиль ></a>
+    {{{InputSearch}}}
+    <div class="chats">
+      {{#each chats}}
+        <div class="chat">
+          <img class="chat__avatar" src="{{imageUrl}}" />
+          <div class="chat__content">
+            <p class="chat__title">{{title}}</p>
+            <div class="chat__last">
+              <p class="chat__last-user-name">{{lastUserName}}&nbsp;
+                <div class="chat__last-message">{{lastMessage}}</div></p>
+            </div>
+          </div>
+          <div class="chat__right">
+            <time class="chat__date">{{timeLastMessage}}</time>
+            {{#if isNewMessages}}
+              <p class="chat__count-messages">{{countNewMessages}}</p>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </section>
+  {{#if chatPage}}
+    <section class="section-right">
+      <div class="chat__top">
+        <div class="chat__top_left">
+          <img class="chat__top_avatar" src={{imageUrlChat}} alt="Аватар" />
+          <p class="chat__top_title">{{titleChat}}</p>
+        </div>
+        {{{ButtonLink1}}}
+      </div>
+      <div class="content">
+        <time class="content__date">{{date}}</time>
+        {{#each messages}}
+          {{#if isMyMessage}}
+            <div class="content__container-right">{{textMessage}}
+              <div class="content__check"></div>
+              <p class="content__time-right">{{timeMessage}}</p>
+            </div>
+          {{else}}
+            <div class="content__container-left">{{textMessage}}
+              <p class="content__time-left">{{timeMessage}}</p>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+      <div class="chat__bottom">
+        {{{ButtonLink2}}}
+        {{{InputMessage}}}
+        {{{ButtonLink3}}}
+      </div>
+    </section>
+  {{else}}
+    <section class="section-rightCenter">
+      <p class="section-right__text">Выберите чат чтобы отправить сообщение</p>
+    </section>
+  {{/if}}
+</main>

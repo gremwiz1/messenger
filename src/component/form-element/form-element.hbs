@@ -1,0 +1,26 @@
+<div class="form__element">
+  <label class="form__label">{{ labelText }}</label>
+  <input class="{{classNameInput}}"
+    id={{ idInput }}
+    type="{{typeInput}}"
+    {{#if valueInput }}
+    value={{ valueInput }}
+    {{/if}}
+  name={{ nameInput }}
+  {{#if placeholderInput }}
+  placeholder={{ placeholderInput }}
+  {{/if}}
+  {{#if readonly }}
+  readonly
+  {{else}}
+  required
+  {{/if}}>
+</input>
+{{#if spanId }}
+<span class="form1__error" id={{ spanId }}>
+  {{#if errorText }}
+  {{ errorText }}
+  {{/if}}
+</span>
+{{/if}}
+</div >

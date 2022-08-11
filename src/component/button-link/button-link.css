@@ -1,0 +1,62 @@
+.form__button {
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--main-bg-color);
+  cursor: pointer;
+  transition: 1s;
+  background: var(--blue-button-color);
+  border-radius: 8px;
+  width: 280px;
+  height: 37px;
+}
+.form__button:hover {
+  opacity: 0.7;
+}
+.chat__bottom_button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  margin-left: 10px;
+  padding-right: 20px;
+  background-image: url("../../../static/right-arrow.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 1s;
+}
+.chat__bottom_button:hover {
+  opacity: 0.7;
+}
+.chat__bottom_link {
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
+  margin-right: 10px;
+  border: none;
+  background-image: url("../../../static/link-button.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 1s;
+}
+.chat__bottom_link:hover {
+  opacity: 0.7;
+}
+.chat__top_button {
+  width: 25px;
+  height: 25px;
+  background: var(--chat-bg-button-color);
+  border-radius: 50%;
+  background-image: url("../../../static/button-chat.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 1s;
+}
+.chat__top_button:hover {
+  opacity: 0.7;
+}

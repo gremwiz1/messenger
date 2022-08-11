@@ -1,0 +1,5 @@
+/build
+**/*.min.js
+/node_module
+/dist
+/.parcel-cache

@@ -1,0 +1,16 @@
+.form__button {
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--main-bg-color);
+  cursor: pointer;
+  transition: 1s;
+  background: var(--blue-button-color);
+  border-radius: 8px;
+  width: 280px;
+  height: 37px;
+}
+.form__button:hover {
+  opacity: 0.7;
+}
