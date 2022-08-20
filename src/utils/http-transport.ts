@@ -15,17 +15,37 @@ interface IOptions {
 }
 
 export class HTTPTransport {
+  baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
   get = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.GET }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.GET },
+      options.timeout
+    );
 
   post = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.POST }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.POST },
+      options.timeout
+    );
 
   put = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.PUT }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.PUT },
+      options.timeout
+    );
 
   delete = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.DELETE }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.DELETE },
+      options.timeout
+    );
 
   request = (
     url: string,
