@@ -1,5 +1,3 @@
-import LoginForm from "../../component/login-form";
-import { renderBlock } from "../../utils/render-block";
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
 
@@ -37,13 +35,11 @@ let InputPassword = new InputElement({
   spanId: "password-input-error-avtorization",
 });
 
-const login = new LoginForm({
+export const loginProps = {
   formTitle: "Вход",
   InputLogin: InputLogin,
   InputPassword: InputPassword,
   link: "../registration/index.html",
   linkText: "Нет аккаунта?",
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", login);
+};

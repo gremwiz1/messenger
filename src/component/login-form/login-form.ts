@@ -21,6 +21,14 @@ export class LoginForm extends Block {
   constructor(props: ILoginForm) {
     super("div", { ...props });
   }
+  componentDidMount(): void {
+    const allErrors = document.querySelectorAll(
+      ".form1__error"
+    ) as NodeListOf<HTMLElement>;
+    Array.from(allErrors).forEach((error) => {
+      error.hidden = true;
+    });
+  }
   render() {
     return this.compile(template, this.props);
   }

@@ -1,5 +1,3 @@
-import LoginForm from "../../component/login-form";
-import { renderBlock } from "../../utils/render-block";
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
 import {
@@ -162,7 +160,7 @@ let InputRepeatPassword = new InputElement({
   },
 });
 
-const registration = new LoginForm({
+export const registrationProps = {
   formTitle: "Регистрация",
   InputEmail: InputEmail,
   InputLogin: InputLogin,
@@ -174,9 +172,7 @@ const registration = new LoginForm({
   link: "../login/index.html",
   linkText: "Войти",
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", registration);
+};
 
 const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
   ".form1__error"

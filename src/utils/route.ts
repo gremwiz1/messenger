@@ -1,16 +1,22 @@
+import Block from "./block";
 import { renderBlock } from "./render-block";
 
+interface IProps {
+  rootQuery: string;
+}
 export class Route {
   private pathName;
-  private blockClass;
-  private block;
-  private props;
+  private blockClass: any;
+  private block: Block | null;
+  private props: IProps;
+  private root: HTMLElement | null;
 
-  constructor(pathName, view, props) {
+  constructor(pathName: string, view: unknown, props: IProps) {
     this.pathName = pathName;
     this.blockClass = view;
     this.block = null;
     this.props = props;
+    this.root = document.querySelector(this.props.rootQuery);
   }
 
   public navigate(pathName: string): void {
@@ -22,7 +28,9 @@ export class Route {
 
   public leave(): void {
     if (this.block) {
-      this.block.hide();
+      this.block = null;
+      if (!this.root) return;
+      this.root.innerHTML = "";
     }
   }
 
@@ -41,5 +49,8 @@ export class Route {
       //render(this.props.rootQuery, this.block);
     }
     renderBlock(this.props.rootQuery, this.block);
+    if (this.block) {
+      this.block.componentDidMount();
+    }
   }
 }
