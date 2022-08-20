@@ -1,5 +1,3 @@
-import ChatPage from "../../component/chat-page";
-import { renderBlock } from "../../utils/render-block";
 import Input from "../../component/input";
 import ButtonLink from "../../component/button-link";
 import { dataChats, chatMessages, imageUrlChat } from "../../utils/mock-data";
@@ -52,7 +50,7 @@ const ButtonLink3 = new ButtonLink({
   },
 });
 
-const chatPage = new ChatPage({
+export const chatPageProps = {
   InputSearch: InputSearch,
   InputMessage: InputMessage,
   chats: dataChats,
@@ -64,6 +62,4 @@ const chatPage = new ChatPage({
   date: date,
   messages: chatMessages,
   chatPage: true,
-});
-
-renderBlock("#app", chatPage);
+};

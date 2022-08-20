@@ -23,6 +23,7 @@ interface IProfile {
   FormRepeatPassword?: FormElement;
   ButtonSubmit: Button;
   ButtonLink?: ButtonLink;
+  ButtonLinkBack: ButtonLink;
   events?: {
     click?: (e?: Event) => void;
   };
@@ -30,6 +31,14 @@ interface IProfile {
 export class Profile extends Block {
   constructor(props: IProfile) {
     super("div", { ...props });
+  }
+  componentDidMount(): void {
+    const allErrors = document.querySelectorAll(
+      ".form1__error"
+    ) as NodeListOf<HTMLElement>;
+    Array.from(allErrors).forEach((error) => {
+      error.hidden = true;
+    });
   }
   render() {
     return this.compile(template, this.props);

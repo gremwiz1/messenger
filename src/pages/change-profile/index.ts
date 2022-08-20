@@ -1,6 +1,4 @@
 import FormElement from "../../component/form-element";
-import { renderBlock } from "../../utils/render-block";
-import Profile from "../../component/profile";
 import Button from "../../component/button";
 import {
   emailValidate,
@@ -9,6 +7,8 @@ import {
   phoneValidate,
   secondNameValidate,
 } from "../../utils/validate";
+import ButtonLink from "../../component/button-link";
+import Router from "../../utils/router";
 
 let FormElementEmail = new FormElement({
   idInput: "idEmail",
@@ -159,7 +159,18 @@ let ButtonSubmit = new Button({
   },
 });
 
-const profile = new Profile({
+let ButtonLinkBack = new ButtonLink({
+  className: "profile__left_link",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const router = new Router();
+      router.back();
+    },
+  },
+});
+
+export const changeProfileProps = {
   email: "gremwiz@yandex.ru",
   login: "gremwiz",
   firstName: "Михаил",
@@ -173,13 +184,5 @@ const profile = new Profile({
   FormElementNickName: FormElementNickName,
   FormElementPhone: FormElementPhone,
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", profile);
-
-const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
-  ".form1__error"
-) as NodeListOf<HTMLElement>;
-Array.from(allErrors).forEach((error) => {
-  error.hidden = true;
-});
+  ButtonLinkBack: ButtonLinkBack,
+};

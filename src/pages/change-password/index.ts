@@ -1,6 +1,4 @@
 import FormElement from "../../component/form-element";
-import { renderBlock } from "../../utils/render-block";
-import Profile from "../../component/profile";
 import Button from "../../component/button";
 import { checkRepeatPassword, passwordValidate } from "../../utils/validate";
 
@@ -72,19 +70,10 @@ let ButtonSubmit = new Button({
   },
 });
 
-const profile = new Profile({
+export const changePasswordProps = {
   firstName: "Михаил",
   FormOldPassword: FormOldPassword,
   FormNewPassword: FormNewPassword,
   FormRepeatPassword: FormRepeatPassword,
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", profile);
-
-const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
-  ".form1__error"
-) as NodeListOf<HTMLElement>;
-Array.from(allErrors).forEach((error) => {
-  error.hidden = true;
-});
+};

@@ -1,5 +1,3 @@
-import ChatPage from "../../component/chat-page";
-import { renderBlock } from "../../utils/render-block";
 import Input from "../../component/input";
 import { dataChats } from "../../utils/mock-data";
 
@@ -11,10 +9,8 @@ let InputSearch = new Input({
   classNameInput: "section-left__search",
 });
 
-const chatPage = new ChatPage({
+export const chatsPageProps = {
   InputSearch: InputSearch,
   chats: dataChats,
   chatPage: false,
-});
-
-renderBlock("#app", chatPage);
+};

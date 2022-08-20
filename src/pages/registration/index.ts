@@ -169,14 +169,7 @@ export const registrationProps = {
   InputPhone: InputPhone,
   InputPassword: InputPassword,
   InputRepeatPassword: InputRepeatPassword,
-  link: "../login/index.html",
+  link: "/",
   linkText: "Войти",
   ButtonSubmit: ButtonSubmit,
 };
-
-const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
-  ".form1__error"
-) as NodeListOf<HTMLElement>;
-Array.from(allErrors).forEach((error) => {
-  error.hidden = true;
-});

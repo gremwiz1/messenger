@@ -39,7 +39,7 @@ export const loginProps = {
   formTitle: "Вход",
   InputLogin: InputLogin,
   InputPassword: InputPassword,
-  link: "../registration/index.html",
+  link: "/sign-up",
   linkText: "Нет аккаунта?",
   ButtonSubmit: ButtonSubmit,
 };

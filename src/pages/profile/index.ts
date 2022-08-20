@@ -1,8 +1,7 @@
 import FormElement from "../../component/form-element";
-import { renderBlock } from "../../utils/render-block";
-import Profile from "../../component/profile";
 import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
+import Router from "../../utils/router";
 
 let FormElementEmail = new FormElement({
   idInput: "idEmail",
@@ -75,7 +74,8 @@ let ButtonSubmit = new Button({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      window.location.href = "/pages/change-profile/index.html";
+      const route = new Router();
+      route.go("/change-profile");
     },
   },
 });
@@ -86,12 +86,24 @@ let LinkButton = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      window.location.href = "/pages/change-password/index.html";
+      const route = new Router();
+      route.go("/change-password");
     },
   },
 });
 
-const profile = new Profile({
+let ButtonLinkBack = new ButtonLink({
+  className: "profile__left_link",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const router = new Router();
+      router.back();
+    },
+  },
+});
+
+export const profileProps = {
   email: "gremwiz@yandex.ru",
   login: "gremwiz",
   firstName: "Михаил",
@@ -106,6 +118,5 @@ const profile = new Profile({
   FormElementPhone: FormElementPhone,
   ButtonSubmit: ButtonSubmit,
   ButtonLink: LinkButton,
-});
-
-renderBlock("#app", profile);
+  ButtonLinkBack: ButtonLinkBack,
+};

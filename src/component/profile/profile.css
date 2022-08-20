@@ -20,6 +20,7 @@
   transition: 1s;
   margin-left: 18px;
   margin-right: 18px;
+  border: none;
 }
 .profile__left_link:hover {
   opacity: 0.7;
