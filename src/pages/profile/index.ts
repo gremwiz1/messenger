@@ -98,7 +98,7 @@ let ButtonLinkBack = new ButtonLink({
     click: function (e: Event) {
       e.preventDefault();
       const router = new Router();
-      router.back();
+      router.go("/messenger");
     },
   },
 });
