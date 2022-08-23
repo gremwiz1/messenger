@@ -1,20 +1,9 @@
 import { BaseUrl } from "../utils/const";
 import { HTTPTransport } from "../utils/http-transport";
+import { IAuthData, IUser } from "../utils/types";
 
 const settingsAPIInstance = new HTTPTransport(BaseUrl);
 
-interface IAuthData {
-  login: string;
-  password: string;
-}
-interface IUser {
-  first_name: string;
-  second_name: string;
-  login: string;
-  email: string;
-  password: string;
-  phone: string;
-}
 export class AuthAPI {
   public signin(data: IAuthData) {
     return settingsAPIInstance.post("/auth/signin", {
