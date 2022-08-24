@@ -37,3 +37,7 @@ export interface IId {
 export interface ILogin {
   login: string;
 }
+
+export interface IChat {
+  title: string;
+}
