@@ -41,3 +41,7 @@ export interface ILogin {
 export interface IChat {
   title: string;
 }
+export interface IUserInChats {
+  users: string[];
+  chatId: string;
+}
