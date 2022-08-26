@@ -45,3 +45,19 @@ export interface IUserInChats {
   users: string[];
   chatId: string;
 }
+export interface IMessage {
+  userId: number;
+  chatId: number;
+  token: string;
+  callback: {
+    onOpen: () => void;
+    onClose: (event: CloseEvent) => void;
+    onError: (event: ErrorEvent) => void;
+    onMessage: (event: MessageEvent) => void;
+  };
+}
+export interface IMessageFormModel {
+  data?: string;
+  content?: string;
+  type?: string;
+}
