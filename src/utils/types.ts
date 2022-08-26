@@ -61,3 +61,13 @@ export interface IMessageFormModel {
   content?: string;
   type?: string;
 }
+export interface IUserModel {
+  id: string;
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
+  avatar: string;
+}
