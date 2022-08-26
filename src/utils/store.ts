@@ -24,6 +24,10 @@ class Store extends EventBus {
     set(this.state, path, value);
     this.emit(StoreEvents.Update);
   }
+
+  public clear() {
+    this.state = {};
+  }
 }
 
 const store = new Store();

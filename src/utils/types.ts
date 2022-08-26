@@ -71,3 +71,12 @@ export interface IUserModel {
   phone: string;
   avatar: string;
 }
+export interface IApi {
+  data: {
+    reason?: string;
+  };
+  response: string;
+  responseText: string;
+  status: number;
+  statusText: string;
+}
