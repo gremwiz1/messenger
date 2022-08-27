@@ -76,7 +76,7 @@ export default class ChatsController {
     }
   }
 
-  public async getTokenChat(chatId: number) {
+  public async getTokenChat(chatId: string) {
     try {
       return chatsApi.getTokenChat(chatId).then((res: IApi) => {
         if (res.data.reason) throw new Error(res.data.reason);

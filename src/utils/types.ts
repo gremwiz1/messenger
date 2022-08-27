@@ -46,8 +46,8 @@ export interface IUserInChats {
   chatId: string;
 }
 export interface IMessage {
-  userId: number;
-  chatId: number;
+  userId: string;
+  chatId: string;
   token: string;
   callback: {
     onOpen: () => void;
@@ -79,4 +79,8 @@ export interface IApi {
   responseText: string;
   status: number;
   statusText: string;
+}
+
+export interface IActiveChat {
+  chatId: string;
 }

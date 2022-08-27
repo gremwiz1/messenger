@@ -23,7 +23,7 @@ export class ChatAPI {
       data: JSON.stringify(data),
     });
   }
-  public getTokenChat(chatId: number) {
+  public getTokenChat(chatId: string) {
     return settingsAPIInstance.post(`/chats/token/${chatId}`);
   }
 }

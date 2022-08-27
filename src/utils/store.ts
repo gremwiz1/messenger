@@ -1,12 +1,12 @@
 import Block from "./block";
 import EventBus from "./event-bus";
 import { isEqual, set } from "./helpers";
-import { IUserModel } from "./types";
+import { IActiveChat, IUserModel } from "./types";
 
 interface IStoreData {
   user?: IUserModel;
   chats?: [];
-  activeChat?: [];
+  activeChat?: IActiveChat;
   activeChatMessages?: [];
 }
 export enum StoreEvents {
