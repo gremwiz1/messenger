@@ -1,18 +1,7 @@
 import { AuthAPI } from "../api/auth-api";
-import { BaseUrlAvatar } from "../utils/const";
+import { checkAvatarPath } from "../utils/helpers";
 import store from "../utils/store";
-import { IApi, IAuthData, IUser, IUserModel } from "../utils/types";
-
-const avatar = "../../static/logo.png";
-function setAvatarPath(path?: string): string | undefined {
-  return path ? `${BaseUrlAvatar}${path}` : avatar;
-}
-
-function checkAvatarPath(user: IUserModel) {
-  return Object.assign({}, user, {
-    avatar: setAvatarPath(user.avatar),
-  });
-}
+import { IApi, IAuthData, IUser } from "../utils/types";
 
 const authApi = new AuthAPI();
 

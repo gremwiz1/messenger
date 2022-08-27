@@ -5,7 +5,7 @@ import { IChat, IUserInChats } from "../utils/types";
 const settingsAPIInstance = new HTTPTransport(BaseUrl);
 
 export class ChatAPI {
-  public getChat() {
+  public getChats() {
     return settingsAPIInstance.get("/chats");
   }
   public createChat(data: IChat) {
@@ -23,7 +23,7 @@ export class ChatAPI {
       data: JSON.stringify(data),
     });
   }
-  public getTokenChat(chatId: string) {
+  public getTokenChat(chatId: number) {
     return settingsAPIInstance.post(`/chats/token/${chatId}`);
   }
 }
