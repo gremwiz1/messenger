@@ -25,7 +25,7 @@ let FormElementLogin = new FormElement({
   labelText: "Логин",
   valueInput: user?.login,
   nameInput: "login",
-  placeholderInput: "Введите логин",
+  placeholderInput: "Введите-логин",
   classNameInput: "form__input",
   readonly: true,
 });
@@ -36,7 +36,7 @@ let FormElementFirstName = new FormElement({
   labelText: "Имя",
   valueInput: user?.first_name,
   nameInput: "firstName",
-  placeholderInput: "Введите имя",
+  placeholderInput: "Введите-имя",
   classNameInput: "form__input",
   readonly: true,
 });
@@ -47,7 +47,7 @@ let FormElementSecondName = new FormElement({
   labelText: "Фамилия",
   valueInput: user?.second_name,
   nameInput: "secondName",
-  placeholderInput: "Введите фамилию",
+  placeholderInput: "Введите-фамилию",
   classNameInput: "form__input",
   readonly: true,
 });
@@ -58,7 +58,7 @@ let FormElementNickName = new FormElement({
   labelText: "Имя в чате",
   valueInput: user?.display_name || "",
   nameInput: "nickName",
-  placeholderInput: "Введите имя в чате",
+  placeholderInput: "Введите-имя-в-чате",
   classNameInput: "form__input",
   readonly: true,
 });
