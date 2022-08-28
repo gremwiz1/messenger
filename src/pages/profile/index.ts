@@ -3,6 +3,7 @@ import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
 import Router from "../../utils/router";
 import store from "../../utils/store";
+import authController from "../../controllers/auth-controller";
 
 const user = store.getState().user;
 const router = new Router();
@@ -110,6 +111,12 @@ let ButtonLogOut = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
+      const res = authController.logout();
+      if (res.status === 200) {
+        router.go("/");
+      } else {
+        console.log("Не удалось разлогиниться");
+      }
     },
   },
 });

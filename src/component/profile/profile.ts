@@ -24,6 +24,7 @@ interface IProfile {
   ButtonSubmit: Button;
   ButtonLink?: ButtonLink;
   ButtonLinkBack: ButtonLink;
+  ButtonLogOut: ButtonLink;
   events?: {
     click?: (e?: Event) => void;
   };
