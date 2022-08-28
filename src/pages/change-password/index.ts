@@ -4,6 +4,8 @@ import { checkRepeatPassword, passwordValidate } from "../../utils/validate";
 import userController from "../../controllers/user-controller";
 import { IPassword } from "../../utils/types";
 import Router from "../../utils/router";
+import ButtonLink from "../../component/button-link";
+import authController from "../../controllers/auth-controller";
 
 const router = new Router();
 let FormOldPassword = new FormElement({
@@ -84,10 +86,27 @@ let ButtonSubmit = new Button({
   },
 });
 
+let ButtonLogOut = new ButtonLink({
+  className: "form__link",
+  title: "Выйти",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const res = authController.logout();
+      if (res.status === 200) {
+        router.go("/");
+      } else {
+        console.log("Не удалось разлогиниться");
+      }
+    },
+  },
+});
+
 export const changePasswordProps = {
   firstName: "Михаил",
   FormOldPassword: FormOldPassword,
   FormNewPassword: FormNewPassword,
   FormRepeatPassword: FormRepeatPassword,
   ButtonSubmit: ButtonSubmit,
+  ButtonLogOut: ButtonLogOut,
 };

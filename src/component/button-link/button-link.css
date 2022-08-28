@@ -60,3 +60,17 @@
 .chat__top_button:hover {
   opacity: 0.7;
 }
+.form__link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--red-link-color);
+  text-align: left;
+  cursor: pointer;
+  transition: 1s;
+  border: none;
+}
+.form__link:hover {
+  opacity: 0.7;
+}

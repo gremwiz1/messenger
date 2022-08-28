@@ -103,6 +103,16 @@ let ButtonLinkBack = new ButtonLink({
     },
   },
 });
+
+let ButtonLogOut = new ButtonLink({
+  className: "form__link",
+  title: "Выйти",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+    },
+  },
+});
 export const profileProps = {
   email: user?.email,
   login: user?.login,
@@ -119,4 +129,5 @@ export const profileProps = {
   ButtonSubmit: ButtonSubmit,
   ButtonLink: LinkButton,
   ButtonLinkBack: ButtonLinkBack,
+  ButtonLogOut: ButtonLogOut,
 };

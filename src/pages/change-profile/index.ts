@@ -13,6 +13,7 @@ import Router from "../../utils/router";
 import store from "../../utils/store";
 import userController from "../../controllers/user-controller";
 import { IProfile } from "../../utils/types";
+import authController from "../../controllers/auth-controller";
 
 const router = new Router();
 const user = store.getState().user;
@@ -189,6 +190,22 @@ let ButtonLinkBack = new ButtonLink({
   },
 });
 
+let ButtonLogOut = new ButtonLink({
+  className: "form__link",
+  title: "Выйти",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const res = authController.logout();
+      if (res.status === 200) {
+        router.go("/");
+      } else {
+        console.log("Не удалось разлогиниться");
+      }
+    },
+  },
+});
+
 export const changeProfileProps = {
   email: user?.email,
   login: user?.login,
@@ -204,4 +221,5 @@ export const changeProfileProps = {
   FormElementPhone: FormElementPhone,
   ButtonSubmit: ButtonSubmit,
   ButtonLinkBack: ButtonLinkBack,
+  ButtonLogOut: ButtonLogOut,
 };
