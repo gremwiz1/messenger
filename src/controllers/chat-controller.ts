@@ -79,7 +79,7 @@ class ChatController {
     }
   }
 
-  public async getTokenChat(chatId: string) {
+  public async getTokenChat(chatId: number) {
     try {
       return chatsApi.getTokenChat(chatId).then((res: IApi) => {
         if (res.data.reason) throw new Error(res.data.reason);

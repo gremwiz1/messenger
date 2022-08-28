@@ -8,6 +8,7 @@ import ButtonDeleteUser from "../../component/button-delete-user";
 import ButtonCreateChat from "../../component/button-create-chat";
 import ChatController from "../../controllers/chat-controller";
 import store from "../../utils/store";
+import MessagesController from "../../controllers/message-controller";
 
 const router = new Router();
 const dataChats = store.getState().chats;
@@ -68,7 +69,10 @@ const ButtonLink3 = new ButtonLink({
       ) as HTMLInputElement;
       let messageText = messageInput.value;
       if (checkMessage(messageText)) {
-        console.log(`message: ${messageText}`);
+        MessagesController.sendMessage({
+          type: "message",
+          content: messageText,
+        });
         messageInput.value = "";
       } else {
         console.log("Message не может быть пустым");

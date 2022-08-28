@@ -1,9 +1,8 @@
 import MessageAPI from "../api/message-api";
 import store from "../utils/store";
 import { IMessage, IMessageFormModel } from "../utils/types";
-import ChatsController from "./chat-controller";
+import chatsController from "./chat-controller";
 
-const chatsController = new ChatsController();
 class MessagesController {
   static status: string;
   private wss: MessageAPI;

@@ -46,8 +46,8 @@ export interface IUserInChats {
   chatId: number;
 }
 export interface IMessage {
-  userId: string;
-  chatId: string;
+  userId: number;
+  chatId: number;
   token: string;
   callback: {
     onOpen: () => void;
@@ -62,7 +62,7 @@ export interface IMessageFormModel {
   type?: string;
 }
 export interface IUserModel {
-  id: string;
+  id: number;
   first_name: string;
   second_name: string;
   login: string;
