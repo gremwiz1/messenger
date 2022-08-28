@@ -3,6 +3,9 @@ import "./chat-page.css";
 import template from "./chat-page.hbs";
 import Input from "../../component/input";
 import ButtonLink from "../../component/button-link";
+import ButtonAddUser from "../button-add-user";
+import ButtonDeleteUser from "../button-delete-user";
+import ButtonCreateChat from "../button-create-chat";
 
 interface IChat {
   imageUrl: string;
@@ -32,10 +35,19 @@ interface IChatPage {
   messages?: IChatMessages[];
   chatPage: Boolean;
   ButtonLinkProfile: ButtonLink;
+  AddButton?: ButtonAddUser;
+  DeleteButton?: ButtonDeleteUser;
+  ButtonCreateNewChat: ButtonCreateChat;
 }
 export class ChatPage extends Block {
   constructor(props: IChatPage) {
     super("div", props);
+  }
+  componentDidMount(): void {
+    const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
+    if (chatButtons) {
+      chatButtons.style.display = "none";
+    }
   }
   render() {
     return this.compile(template, this.props);

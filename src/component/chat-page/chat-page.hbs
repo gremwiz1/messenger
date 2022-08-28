@@ -2,6 +2,7 @@
   <section class="section-left">
     {{{ButtonLinkProfile}}}
     {{{InputSearch}}}
+    {{{ButtonCreateNewChat}}}
     <div class="chats">
       {{#each chats}}
         <div class="chat">
@@ -31,6 +32,10 @@
           <p class="chat__top_title">{{titleChat}}</p>
         </div>
         {{{ButtonLink1}}}
+      </div>
+      <div class="chat-buttons">
+        {{{AddButton}}}
+        {{{DeleteButton}}}
       </div>
       <div class="content">
         <time class="content__date">{{date}}</time>

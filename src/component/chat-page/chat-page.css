@@ -343,3 +343,8 @@
   align-items: center;
   width: 100%;
 }
+.chat-buttons {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+}

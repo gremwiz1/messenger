@@ -1,3 +1,4 @@
+import ButtonCreateChat from "../../component/button-create-chat";
 import ButtonLink from "../../component/button-link";
 import Input from "../../component/input";
 import { dataChats } from "../../utils/mock-data";
@@ -23,9 +24,18 @@ let InputSearch = new Input({
   classNameInput: "section-left__search",
 });
 
+let ButtonCreateNewChat = new ButtonCreateChat({
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+    },
+  },
+});
+
 export const chatsPageProps = {
   InputSearch: InputSearch,
   chats: dataChats,
   chatPage: false,
   ButtonLinkProfile: ButtonLinkProfile,
+  ButtonCreateNewChat: ButtonCreateNewChat,
 };

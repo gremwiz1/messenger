@@ -3,6 +3,9 @@ import ButtonLink from "../../component/button-link";
 import { dataChats, chatMessages, imageUrlChat } from "../../utils/mock-data";
 import { checkMessage } from "../../utils/validate";
 import Router from "../../utils/router";
+import ButtonAddUser from "../../component/button-add-user";
+import ButtonDeleteUser from "../../component/button-delete-user";
+import ButtonCreateChat from "../../component/button-create-chat";
 
 const router = new Router();
 let InputSearch = new Input({
@@ -27,6 +30,17 @@ const date = "19 июня";
 
 const ButtonLink1 = new ButtonLink({
   className: "chat__top_button",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const chatButtons = document.querySelector(
+        ".chat-buttons"
+      ) as HTMLElement;
+      if (chatButtons) {
+        chatButtons.style.display = "flex";
+      }
+    },
+  },
 });
 
 const ButtonLink2 = new ButtonLink({
@@ -63,6 +77,30 @@ let ButtonLinkProfile = new ButtonLink({
   },
 });
 
+let AddButton = new ButtonAddUser({
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+    },
+  },
+});
+
+let DeleteButton = new ButtonDeleteUser({
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+    },
+  },
+});
+
+let ButtonCreateNewChat = new ButtonCreateChat({
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+    },
+  },
+});
+
 export const chatPageProps = {
   InputSearch: InputSearch,
   InputMessage: InputMessage,
@@ -76,4 +114,7 @@ export const chatPageProps = {
   messages: chatMessages,
   chatPage: true,
   ButtonLinkProfile: ButtonLinkProfile,
+  AddButton: AddButton,
+  DeleteButton: DeleteButton,
+  ButtonCreateNewChat: ButtonCreateNewChat,
 };
