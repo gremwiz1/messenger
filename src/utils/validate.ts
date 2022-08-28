@@ -3,6 +3,7 @@ const validate = {
   email: /\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}/,
   firstName: /^[A-ZА-Я][a-zа-я]+$/,
   secondName: /^[A-ZА-Я][a-zа-я]+$/,
+  displayName: /^[A-ZА-Я][a-zа-я]+$/,
   phone: /^[+]?[0-9]{10,15}$/,
   password: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[0-9a-zA-Z!@#$%^&*]{8,40}$/,
   message: /[^\s]/,
@@ -34,6 +35,13 @@ export const secondNameValidate = function (value: string | undefined) {
     return false;
   }
   return validate.secondName.test(value);
+};
+
+export const displayNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
+  return validate.displayName.test(value);
 };
 
 export const phoneValidate = function (value: string | undefined) {

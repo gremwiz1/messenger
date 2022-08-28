@@ -2,11 +2,15 @@ import FormElement from "../../component/form-element";
 import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
 import Router from "../../utils/router";
+import store from "../../utils/store";
+
+const user = store.getState().user;
+const router = new Router();
 
 let FormElementEmail = new FormElement({
   idInput: "idEmail",
   labelText: "Email",
-  valueInput: "gremwiz@yandex.ru",
+  valueInput: user?.email,
   nameInput: "email",
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
@@ -18,7 +22,7 @@ let FormElementLogin = new FormElement({
   typeInput: "text",
   idInput: "idLogin",
   labelText: "Логин",
-  valueInput: "gremwiz",
+  valueInput: user?.login,
   nameInput: "login",
   placeholderInput: "Введите логин",
   classNameInput: "form__input",
@@ -29,7 +33,7 @@ let FormElementFirstName = new FormElement({
   typeInput: "text",
   idInput: "idFirstName",
   labelText: "Имя",
-  valueInput: "Михаил",
+  valueInput: user?.first_name,
   nameInput: "firstName",
   placeholderInput: "Введите имя",
   classNameInput: "form__input",
@@ -40,7 +44,7 @@ let FormElementSecondName = new FormElement({
   typeInput: "text",
   idInput: "idSecondName",
   labelText: "Фамилия",
-  valueInput: "Зотов",
+  valueInput: user?.second_name,
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
   classNameInput: "form__input",
@@ -51,7 +55,7 @@ let FormElementNickName = new FormElement({
   typeInput: "text",
   idInput: "idNickName",
   labelText: "Имя в чате",
-  valueInput: "Mike",
+  valueInput: user?.display_name || "",
   nameInput: "nickName",
   placeholderInput: "Введите имя в чате",
   classNameInput: "form__input",
@@ -62,7 +66,7 @@ let FormElementPhone = new FormElement({
   typeInput: "text",
   idInput: "idPhone",
   labelText: "Телефон",
-  valueInput: "+70021234567",
+  valueInput: user?.phone,
   nameInput: "phone",
   placeholderInput: "+71112223344",
   classNameInput: "form__input",
@@ -74,8 +78,7 @@ let ButtonSubmit = new Button({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const route = new Router();
-      route.go("/change-profile");
+      router.go("/change-profile");
     },
   },
 });
@@ -86,8 +89,7 @@ let LinkButton = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const route = new Router();
-      route.go("/change-password");
+      router.go("/change-password");
     },
   },
 });
@@ -97,19 +99,17 @@ let ButtonLinkBack = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const router = new Router();
       router.go("/messenger");
     },
   },
 });
-
 export const profileProps = {
-  email: "gremwiz@yandex.ru",
-  login: "gremwiz",
-  firstName: "Михаил",
-  secondName: "Зотов",
-  nickName: "Mike",
-  phone: "+79921234567",
+  email: user?.email,
+  login: user?.login,
+  firstName: user?.first_name,
+  secondName: user?.second_name,
+  nickName: user?.display_name || "",
+  phone: user?.phone,
   FormElementEmail: FormElementEmail,
   FormElementLogin: FormElementLogin,
   FormElementFirstName: FormElementFirstName,

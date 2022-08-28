@@ -1,7 +1,11 @@
 import FormElement from "../../component/form-element";
 import Button from "../../component/button";
 import { checkRepeatPassword, passwordValidate } from "../../utils/validate";
+import userController from "../../controllers/user-controller";
+import { IPassword } from "../../utils/types";
+import Router from "../../utils/router";
 
+const router = new Router();
 let FormOldPassword = new FormElement({
   idInput: "idPassword",
   labelText: "Старый пароль",
@@ -60,11 +64,21 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        password: formData.get("password"),
-        newPassword: formData.get("newPassword"),
-        repeatPassword: formData.get("repeatPassword"),
+        oldPassword: formData.get("password")?.toString(),
+        newPassword: formData.get("newPassword")?.toString(),
+        repeatPassword: formData.get("repeatPassword")?.toString(),
       };
-
+      if (
+        checkRepeatPassword(data.newPassword, data.repeatPassword) &&
+        passwordValidate(data.newPassword)
+      ) {
+        const res = userController.changeUserPassword(data as IPassword);
+        if (res.status === 200) {
+          router.go("/settings");
+        } else {
+          console.log("Не удалось сменить пароль");
+        }
+      }
       console.log(data);
     },
   },

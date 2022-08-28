@@ -5,7 +5,7 @@ import { IApi, IAvatar, ILogin, IPassword, IProfile } from "../utils/types";
 
 const userApi = new UserAPI();
 
-export default class UserController {
+class UserController {
   public changeUserAvatar(form: IAvatar) {
     try {
       return userApi.changeUserAvatar(form).then((res: IApi) => {
@@ -48,3 +48,4 @@ export default class UserController {
     }
   }
 }
+export default new UserController();

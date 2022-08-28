@@ -70,6 +70,7 @@ export interface IUserModel {
   password: string;
   phone: string;
   avatar: string;
+  display_name?: string;
 }
 export interface IApi {
   data: {

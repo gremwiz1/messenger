@@ -1,6 +1,7 @@
 import FormElement from "../../component/form-element";
 import Button from "../../component/button";
 import {
+  displayNameValidate,
   emailValidate,
   firstNameValidate,
   loginValidate,
@@ -9,11 +10,16 @@ import {
 } from "../../utils/validate";
 import ButtonLink from "../../component/button-link";
 import Router from "../../utils/router";
+import store from "../../utils/store";
+import userController from "../../controllers/user-controller";
+import { IProfile } from "../../utils/types";
 
+const router = new Router();
+const user = store.getState().user;
 let FormElementEmail = new FormElement({
   idInput: "idEmail",
   labelText: "Email",
-  valueInput: "gremwiz@yandex.ru",
+  valueInput: user?.email,
   nameInput: "email",
   placeholderInput: "123@yandex.ru",
   classNameInput: "form__input",
@@ -36,7 +42,7 @@ let FormElementLogin = new FormElement({
   typeInput: "text",
   idInput: "idLogin",
   labelText: "Логин",
-  valueInput: "gremwiz",
+  valueInput: user?.login,
   nameInput: "login",
   placeholderInput: "Введите логин",
   classNameInput: "form__input",
@@ -58,7 +64,7 @@ let FormElementFirstName = new FormElement({
   typeInput: "text",
   idInput: "idFirstName",
   labelText: "Имя",
-  valueInput: "Михаил",
+  valueInput: user?.first_name,
   nameInput: "firstName",
   placeholderInput: "Введите имя",
   classNameInput: "form__input",
@@ -83,7 +89,7 @@ let FormElementSecondName = new FormElement({
   typeInput: "text",
   idInput: "idSecondName",
   labelText: "Фамилия",
-  valueInput: "Зотов",
+  valueInput: user?.second_name,
   nameInput: "secondName",
   placeholderInput: "Введите фамилию",
   classNameInput: "form__input",
@@ -109,7 +115,7 @@ let FormElementNickName = new FormElement({
   typeInput: "text",
   idInput: "idNickName",
   labelText: "Имя в чате",
-  valueInput: "Mike",
+  valueInput: user?.display_name || "",
   nameInput: "nickName",
   placeholderInput: "Введите имя в чате",
   classNameInput: "form__input",
@@ -119,7 +125,7 @@ let FormElementPhone = new FormElement({
   typeInput: "text",
   idInput: "idPhone",
   labelText: "Телефон",
-  valueInput: "+70021234567",
+  valueInput: user?.phone,
   nameInput: "phone",
   placeholderInput: "+71112223344",
   classNameInput: "form__input",
@@ -146,15 +152,29 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        email: formData.get("email"),
-        login: formData.get("login"),
-        first_name: formData.get("firstName"),
-        second_name: formData.get("secondName"),
-        nick_name: formData.get("nickName"),
-        phone: formData.get("phone"),
+        email: formData.get("email")?.toString(),
+        login: formData.get("login")?.toString(),
+        first_name: formData.get("firstName")?.toString(),
+        second_name: formData.get("secondName")?.toString(),
+        display_name: formData.get("nickName")?.toString(),
+        phone: formData.get("phone")?.toString(),
       };
-
-      console.log(data);
+      if (
+        emailValidate(data.email) &&
+        loginValidate(data.login) &&
+        firstNameValidate(data.first_name) &&
+        secondNameValidate(data.second_name) &&
+        phoneValidate(data.phone) &&
+        displayNameValidate(data.display_name)
+      ) {
+        const res = userController.changeUserProfile(data as IProfile);
+        if (res.status === 200) {
+          store.set("user", res.data);
+          router.go("/settings");
+        } else {
+          console.log("Не удалось изменить профайл");
+        }
+      }
     },
   },
 });
@@ -164,19 +184,18 @@ let ButtonLinkBack = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const router = new Router();
       router.go("/messenger");
     },
   },
 });
 
 export const changeProfileProps = {
-  email: "gremwiz@yandex.ru",
-  login: "gremwiz",
-  firstName: "Михаил",
-  secondName: "Зотов",
-  nickName: "Mike",
-  phone: "+79921234567",
+  email: user?.email,
+  login: user?.login,
+  firstName: user?.first_name,
+  secondName: user?.second_name,
+  nickName: user?.display_name || "",
+  phone: user?.phone,
   FormElementEmail: FormElementEmail,
   FormElementLogin: FormElementLogin,
   FormElementFirstName: FormElementFirstName,
