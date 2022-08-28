@@ -3,8 +3,10 @@ import store from "../utils/store";
 import { IMessage, IMessageFormModel } from "../utils/types";
 import chatsController from "./chat-controller";
 
+const Interval = 10000;
 class MessagesController {
   static status: string;
+  static timeout: NodeJS.Timer | undefined;
   private wss: MessageAPI;
   private _events(): IMessage["callback"] {
     return {
@@ -63,19 +65,35 @@ class MessagesController {
 
   private _onMessageHandler(e: Event) {
     const res = this.formingResponse(e);
-    !res.data.reason &&
-      (Array.isArray(res.data) || res.data?.type === "message");
-    {
+    if (res.data?.type === "pong") {
+      MessagesController.status = "online";
+    } else if (Array.isArray(res.data) || res.data?.type === "message") {
       const messages = store.getState().activeChatMessages || [];
       const newMessages = Array.isArray(res.data) ? res.data : [res.data];
       store.set("activeChatMessages", newMessages.concat(messages));
       chatsController.getChats();
+      this._ping();
     }
   }
 
   private _onErrorHandler() {
     MessagesController.status = "offline";
     this.wss.close();
+  }
+
+  private _ping() {
+    if (MessagesController.timeout) {
+      clearTimeout(MessagesController.timeout);
+      MessagesController.timeout = undefined;
+    }
+
+    MessagesController.timeout = setTimeout(() => {
+      this._sendPing();
+    }, Interval);
+  }
+
+  private _sendPing() {
+    this.wss.send({ type: "ping" });
   }
 }
 
