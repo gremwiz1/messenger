@@ -206,6 +206,16 @@ let ButtonLogOut = new ButtonLink({
   },
 });
 
+let Avatar = new ButtonLink({
+  className: "avatar",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      router.go("/popup");
+    },
+  },
+});
+
 export const changeProfileProps = {
   email: user?.email,
   login: user?.login,
@@ -222,4 +232,5 @@ export const changeProfileProps = {
   ButtonSubmit: ButtonSubmit,
   ButtonLinkBack: ButtonLinkBack,
   ButtonLogOut: ButtonLogOut,
+  Avatar: Avatar,
 };

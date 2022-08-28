@@ -2,7 +2,9 @@ import Input from "../../component/input";
 import ButtonLink from "../../component/button-link";
 import { dataChats, chatMessages, imageUrlChat } from "../../utils/mock-data";
 import { checkMessage } from "../../utils/validate";
+import Router from "../../utils/router";
 
+const router = new Router();
 let InputSearch = new Input({
   typeInput: "text",
   idInput: "idSearch",
@@ -50,6 +52,17 @@ const ButtonLink3 = new ButtonLink({
   },
 });
 
+let ButtonLinkProfile = new ButtonLink({
+  title: "Профиль >",
+  className: "section-left__link",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      router.go("/settings");
+    },
+  },
+});
+
 export const chatPageProps = {
   InputSearch: InputSearch,
   InputMessage: InputMessage,
@@ -62,4 +75,5 @@ export const chatPageProps = {
   date: date,
   messages: chatMessages,
   chatPage: true,
+  ButtonLinkProfile: ButtonLinkProfile,
 };

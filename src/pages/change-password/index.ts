@@ -102,6 +102,16 @@ let ButtonLogOut = new ButtonLink({
   },
 });
 
+let Avatar = new ButtonLink({
+  className: "avatar",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      router.go("/popup");
+    },
+  },
+});
+
 export const changePasswordProps = {
   firstName: "Михаил",
   FormOldPassword: FormOldPassword,
@@ -109,4 +119,5 @@ export const changePasswordProps = {
   FormRepeatPassword: FormRepeatPassword,
   ButtonSubmit: ButtonSubmit,
   ButtonLogOut: ButtonLogOut,
+  Avatar: Avatar,
 };

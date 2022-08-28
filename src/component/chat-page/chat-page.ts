@@ -31,6 +31,7 @@ interface IChatPage {
   date?: string;
   messages?: IChatMessages[];
   chatPage: Boolean;
+  ButtonLinkProfile: ButtonLink;
 }
 export class ChatPage extends Block {
   constructor(props: IChatPage) {
