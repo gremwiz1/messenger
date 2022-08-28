@@ -1,5 +1,8 @@
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
+import authController from "../../controllers/auth-controller";
+import Router from "../../utils/router";
+import { IUser } from "../../utils/types";
 import {
   checkRepeatPassword,
   emailValidate,
@@ -10,6 +13,7 @@ import {
   secondNameValidate,
 } from "../../utils/validate";
 
+const router = new Router();
 let ButtonSubmit = new Button({
   title: "Зарегистрироваться",
   events: {
@@ -19,16 +23,35 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        email: formData.get("email"),
-        login: formData.get("login"),
-        first_name: formData.get("firstName"),
-        second_name: formData.get("secondName"),
-        password: formData.get("password"),
-        phone: formData.get("phone"),
-        password_repeat: formData.get("passwordRepeat"),
+        email: formData.get("email")?.toString(),
+        login: formData.get("login")?.toString(),
+        first_name: formData.get("firstName")?.toString(),
+        second_name: formData.get("secondName")?.toString(),
+        password: formData.get("password")?.toString(),
+        phone: formData.get("phone")?.toString(),
+        password_repeat: formData.get("passwordRepeat")?.toString(),
       };
-
-      console.log(data);
+      if (
+        emailValidate(data.email) &&
+        loginValidate(data.login) &&
+        firstNameValidate(data.first_name) &&
+        secondNameValidate(data.second_name) &&
+        passwordValidate(data.password) &&
+        phoneValidate(data.phone) &&
+        checkRepeatPassword(data.password, data.password_repeat)
+      ) {
+        const res = authController.signup(data as IUser);
+        if (res.status === 200) {
+          const res = authController.getUserInfo();
+          if (res.data?.id) {
+            router.go("/messenger");
+          } else {
+            console.log("Не удалось получить информацию о пользователе");
+          }
+        } else {
+          console.log("Не удалось зарегистрировать пользователя");
+        }
+      }
     },
   },
 });

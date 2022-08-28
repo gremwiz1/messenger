@@ -8,34 +8,55 @@ const validate = {
   message: /[^\s]/,
 };
 
-export const loginValidate = function (value: string) {
+export const loginValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.login.test(value);
 };
 
-export const emailValidate = function (value: string) {
+export const emailValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.email.test(value);
 };
 
-export const firstNameValidate = function (value: string) {
+export const firstNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.firstName.test(value);
 };
 
-export const secondNameValidate = function (value: string) {
+export const secondNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.secondName.test(value);
 };
 
-export const phoneValidate = function (value: string) {
+export const phoneValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.phone.test(value);
 };
 
-export const passwordValidate = function (value: string) {
+export const passwordValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.password.test(value);
 };
 
 export const checkRepeatPassword = function (
-  password: string,
-  passwordRepeat: string
+  password: string | undefined,
+  passwordRepeat: string | undefined
 ) {
+  if (!password || !passwordRepeat) {
+    return false;
+  }
   return password === passwordRepeat;
 };
 

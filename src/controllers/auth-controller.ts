@@ -5,7 +5,7 @@ import { IApi, IAuthData, IUser } from "../utils/types";
 
 const authApi = new AuthAPI();
 
-export default class AuthController {
+class AuthController {
   public signup(data: IUser) {
     try {
       return authApi.signup(data);
@@ -54,3 +54,4 @@ export default class AuthController {
     }
   }
 }
+export default new AuthController();
