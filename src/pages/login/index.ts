@@ -1,6 +1,10 @@
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
+import authController from "../../controllers/auth-controller";
+import Router from "../../utils/router";
+import { IAuthData } from "../../utils/types";
 
+const router = new Router();
 let ButtonSubmit = new Button({
   title: "Авторизироваться",
   events: {
@@ -10,11 +14,22 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        login: formData.get("login"),
-        password: formData.get("password"),
+        login: formData.get("login")?.toString(),
+        password: formData.get("password")?.toString(),
       };
-
-      console.log(data);
+      if (data.login && data.password) {
+        const res = authController.signin(data as IAuthData);
+        if (res.status === 200) {
+          const res = authController.getUserInfo();
+          if (res.data?.id) {
+            router.go("/messenger");
+          } else {
+            console.log("Не удалось получить информацию о пользователе");
+          }
+        } else {
+          console.log("Авторизироваться не получилось");
+        }
+      }
     },
   },
 });
