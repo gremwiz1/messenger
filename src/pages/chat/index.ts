@@ -1,13 +1,26 @@
 import Input from "../../component/input";
 import ButtonLink from "../../component/button-link";
-import { dataChats, chatMessages, imageUrlChat } from "../../utils/mock-data";
+import { chatMessages } from "../../utils/mock-data";
 import { checkMessage } from "../../utils/validate";
 import Router from "../../utils/router";
 import ButtonAddUser from "../../component/button-add-user";
 import ButtonDeleteUser from "../../component/button-delete-user";
 import ButtonCreateChat from "../../component/button-create-chat";
+import ChatController from "../../controllers/chat-controller";
+import store from "../../utils/store";
 
 const router = new Router();
+const dataChats = store.getState().chats;
+const idActiveChat = store.getState().activeChat?.chatId;
+let avatarChat = "";
+let titleChat = "";
+if (idActiveChat) {
+  const activeChat = dataChats?.find((item) => item.id === idActiveChat);
+  if (activeChat) {
+    avatarChat = activeChat.imageUrl;
+    titleChat = activeChat.title;
+  }
+}
 let InputSearch = new Input({
   typeInput: "text",
   idInput: "idSearch",
@@ -24,8 +37,6 @@ let InputMessage = new Input({
   classNameInput: "chat__bottom_input",
 });
 
-const avatarChat = imageUrlChat;
-const titleChat = "Михаил";
 const date = "19 июня";
 
 const ButtonLink1 = new ButtonLink({
@@ -81,6 +92,18 @@ let AddButton = new ButtonAddUser({
   events: {
     click: function (e: Event) {
       e.preventDefault();
+      const chatId = store.getState().activeChat?.chatId;
+      const userId = prompt("Введите ID пользователя чтобы добавить его в чат");
+      if (chatId && userId) {
+        try {
+          ChatController.addUserInChat({
+            users: [+userId],
+            chatId: chatId,
+          });
+        } catch {
+          console.log("Не удалось добавить пользователя");
+        }
+      }
     },
   },
 });
@@ -89,6 +112,20 @@ let DeleteButton = new ButtonDeleteUser({
   events: {
     click: function (e: Event) {
       e.preventDefault();
+      const chatId = store.getState().activeChat?.chatId;
+      const userId = prompt(
+        "Введите ID пользователя чтобы удалить его из чата"
+      );
+      if (chatId && userId) {
+        try {
+          ChatController.deleteUserFromChat({
+            users: [+userId],
+            chatId: chatId,
+          });
+        } catch {
+          console.log("Не удалось удалить пользователя");
+        }
+      }
     },
   },
 });
@@ -97,6 +134,14 @@ let ButtonCreateNewChat = new ButtonCreateChat({
   events: {
     click: function (e: Event) {
       e.preventDefault();
+      const titleChat = prompt("Введите название чата");
+      if (titleChat) {
+        try {
+          ChatController.createChat({ title: titleChat });
+        } catch {
+          console.log("Что-то пошло не так при создании чата");
+        }
+      }
     },
   },
 });

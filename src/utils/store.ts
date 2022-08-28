@@ -1,11 +1,11 @@
 import Block from "./block";
 import EventBus from "./event-bus";
 import { isEqual, set } from "./helpers";
-import { IActiveChat, IUserModel } from "./types";
+import { IActiveChat, IChats, IUserModel } from "./types";
 
 interface IStoreData {
   user?: IUserModel;
-  chats?: [];
+  chats?: IChats[];
   activeChat?: IActiveChat;
   activeChatMessages?: [];
 }

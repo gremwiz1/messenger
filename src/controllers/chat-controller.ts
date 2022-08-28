@@ -5,7 +5,7 @@ import { IApi, IChat, IUserInChats } from "../utils/types";
 
 const chatsApi = new ChatAPI();
 
-export default class ChatsController {
+class ChatController {
   public async getChats() {
     try {
       return chatsApi.getChats().then((res: IApi) => {
@@ -13,6 +13,7 @@ export default class ChatsController {
         const arrayChats = JSON.parse(res.response).map((item: any) => {
           if (item.unread_count > 0) {
             return {
+              id: item.id,
               imageUrl: setAvatarPath(item.avatar),
               title: item.title,
               lastUserName: item.last_message.first_name,
@@ -23,6 +24,7 @@ export default class ChatsController {
             };
           } else {
             return {
+              id: item.id,
               imageUrl: setAvatarPath(item.avatar),
               title: item.title,
               lastUserName: item.last_message.first_name,
@@ -45,6 +47,7 @@ export default class ChatsController {
     try {
       return chatsApi.addUserInChat(data).then((res: IApi) => {
         if (res.data.reason) throw new Error(res.data.reason);
+        this.getChats();
         return res;
       });
     } catch (error) {
@@ -88,3 +91,4 @@ export default class ChatsController {
     }
   }
 }
+export default new ChatController();

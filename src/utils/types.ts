@@ -42,8 +42,8 @@ export interface IChat {
   title: string;
 }
 export interface IUserInChats {
-  users: string[];
-  chatId: string;
+  users: number[];
+  chatId: number;
 }
 export interface IMessage {
   userId: string;
@@ -83,5 +83,15 @@ export interface IApi {
 }
 
 export interface IActiveChat {
-  chatId: string;
+  chatId: number;
+}
+export interface IChats {
+  id: number;
+  imageUrl: string;
+  title: string;
+  lastUserName: string;
+  lastMessage: string;
+  timeLastMessage: string;
+  isNewMessages: boolean;
+  countNewMessages: number;
 }
