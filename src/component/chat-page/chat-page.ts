@@ -6,6 +6,10 @@ import ButtonLink from "../../component/button-link";
 import ButtonAddUser from "../button-add-user";
 import ButtonDeleteUser from "../button-delete-user";
 import ButtonCreateChat from "../button-create-chat";
+import store from "../../utils/store";
+import Router from "../../utils/router";
+
+const router = new Router();
 
 interface IChat {
   imageUrl: string;
@@ -47,6 +51,10 @@ export class ChatPage extends Block {
     const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
     if (chatButtons) {
       chatButtons.style.display = "none";
+    }
+    const user = store.getState().user;
+    if (!user) {
+      router.go("/");
     }
   }
   render() {

@@ -4,7 +4,10 @@ import template from "./profile.hbs";
 import FormElement from "../form-element";
 import Button from "../button";
 import ButtonLink from "../button-link";
+import Router from "../../utils/router";
+import store from "../../utils/store";
 
+const router = new Router();
 interface IProfile {
   email?: string;
   login?: string;
@@ -41,6 +44,10 @@ export class Profile extends Block {
     Array.from(allErrors).forEach((error) => {
       error.hidden = true;
     });
+    const user = store.getState().user;
+    if (!user) {
+      router.go("/");
+    }
   }
   render() {
     return this.compile(template, this.props);

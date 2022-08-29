@@ -14,6 +14,9 @@ import { popupProps } from "./pages/popup";
 import { profileProps } from "./pages/profile";
 import { registrationProps } from "./pages/registration";
 import Router from "./utils/router";
+import AuthController from "./controllers/auth-controller";
+import ChatController from "./controllers/chat-controller";
+import store from "./utils/store";
 
 const router = new Router();
 
@@ -33,4 +36,12 @@ router.start();
 const { pathname } = window.location;
 if (!router.getRoute(pathname)) {
   router.use("/404", error, notFoundPageProps).go("/404");
+}
+
+AuthController.getUserInfo();
+ChatController.getChats();
+
+const user = store.getState().user;
+if (user) {
+  router.go("/messenger");
 }
