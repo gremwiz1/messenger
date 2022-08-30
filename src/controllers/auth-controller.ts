@@ -1,54 +1,48 @@
 import { AuthAPI } from "../api/auth-api";
 import { checkAvatarPath } from "../utils/helpers";
 import store from "../utils/store";
-import { IApi, IAuthData, IUser } from "../utils/types";
+import { IAuthData, IUser } from "../utils/types";
 
 const authApi = new AuthAPI();
 
 class AuthController {
-  public signup(data: IUser) {
+  public async signup(data: IUser) {
     try {
-      return authApi.signup(data);
+      const res = await authApi.signup(data);
+      return res;
     } catch (error) {
       return error;
     }
   }
 
-  public signin(data: IAuthData) {
+  public async signin(data: IAuthData) {
     try {
-      return authApi.signin(data);
+      const res = await authApi.signin(data);
+      return res;
     } catch (error) {
       return error;
     }
   }
 
-  public logout() {
+  public async logout() {
     try {
-      return authApi.logout().then((res: IApi) => {
-        if (res.data) {
-          if (!res.data.reason) {
-            store.clear();
-          }
-        }
-
-        return res;
-      });
+      const res: any = await authApi.logout();
+      if (res.status == 200) {
+        store.clear();
+      }
+      return res;
     } catch (error) {
       return error;
     }
   }
 
-  public getUserInfo() {
+  public async getUserInfo() {
     try {
-      return authApi.getUserInfo().then((res: IApi) => {
-        if (res.data) {
-          if (!res.data.reason) {
-            store.set("user", checkAvatarPath(JSON.parse(res.response)));
-          }
-        }
-
-        return res;
-      });
+      const res: any = await authApi.getUserInfo();
+      if (res.status == 200) {
+        store.set("user", checkAvatarPath(JSON.parse(res.response)));
+      }
+      return res;
     } catch (error) {
       return error;
     }

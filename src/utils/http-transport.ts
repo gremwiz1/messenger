@@ -10,8 +10,8 @@ enum Methods {
 interface IOptions {
   method?: Methods;
   timeout?: number;
-  headers?: Record<string, string>;
   data?: XMLHttpRequestBodyInit;
+  contentType?: string;
 }
 
 export class HTTPTransport {
@@ -52,7 +52,7 @@ export class HTTPTransport {
     options: IOptions = { method: Methods.GET },
     timeout = 5000
   ) => {
-    const { headers = {}, method, data } = options;
+    const { method, data, contentType = "application/json" } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -60,10 +60,11 @@ export class HTTPTransport {
         method as string,
         method === Methods.GET && !!data ? url + queryStringify(data) : url
       );
-
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
-      });
+      xhr.withCredentials = true;
+      xhr.setRequestHeader("credentials", "include");
+      xhr.setRequestHeader("mode", "cors");
+      if (!(data instanceof FormData))
+        xhr.setRequestHeader("content-type", contentType);
 
       xhr.onload = () => {
         resolve(xhr);

@@ -196,12 +196,13 @@ let ButtonLogOut = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const res = authController.logout();
-      if (res.status === 200) {
-        router.go("/");
-      } else {
-        console.log("Не удалось разлогиниться");
-      }
+      authController.logout().then((res) => {
+        if (res.status === 200) {
+          router.go("/");
+        } else {
+          console.log("Не удалось разлогиниться");
+        }
+      });
     },
   },
 });

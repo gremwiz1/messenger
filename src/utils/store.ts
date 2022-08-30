@@ -1,7 +1,8 @@
-import Block from "./block";
 import EventBus from "./event-bus";
 import { isEqual, set } from "./helpers";
 import { IActiveChat, IChats, IUserModel } from "./types";
+
+const eventBus = new EventBus();
 
 interface IStoreData {
   user?: IUserModel;
@@ -15,6 +16,7 @@ export enum StoreEvents {
 
 class Store extends EventBus {
   private state: IStoreData = {};
+  public eventBus = eventBus;
 
   public getState() {
     return this.state;
@@ -22,7 +24,7 @@ class Store extends EventBus {
 
   public set(path: keyof IStoreData, value: unknown) {
     set(this.state, path, value);
-    this.emit(StoreEvents.Update);
+    this.eventBus.emit(StoreEvents.Update, path, value);
   }
 
   public clear() {
@@ -35,7 +37,7 @@ const store = new Store();
 export function withStore(
   mapStateToProps: (state: IStoreData) => Record<string, unknown>
 ) {
-  return function (Component: typeof Block) {
+  return function (Component: any) {
     return class extends Component {
       constructor(props: any) {
         const state = mapStateToProps(store.getState());

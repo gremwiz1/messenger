@@ -9,7 +9,7 @@ class UserController {
   public changeUserAvatar(form: IAvatar) {
     try {
       return userApi.changeUserAvatar(form).then((res: IApi) => {
-        if (res.data) {
+        if (res.status == 200) {
           store.set("user", checkAvatarPath(JSON.parse(res.response)));
         }
         return res;
@@ -30,7 +30,7 @@ class UserController {
   public changeUserProfile(data: IProfile) {
     try {
       return userApi.changeUserProfile(data).then((res: IApi) => {
-        if (res.data) {
+        if (res.status == 200) {
           store.set("user", checkAvatarPath(JSON.parse(res.response)));
         }
         return res;

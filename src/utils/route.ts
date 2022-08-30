@@ -43,10 +43,8 @@ export class Route {
   }
 
   public render(): void {
-    console.log(this.block);
     if (!this.block) {
       this.block = new this.blockClass(this.props);
-      //render(this.props.rootQuery, this.block);
     }
     renderBlock(this.props.rootQuery, this.block);
     if (this.block) {

@@ -2,11 +2,11 @@ import FormElement from "../../component/form-element";
 import Button from "../../component/button";
 import ButtonLink from "../../component/button-link";
 import Router from "../../utils/router";
-import store from "../../utils/store";
 import authController from "../../controllers/auth-controller";
+import store from "../../utils/store";
 
-const user = store.getState().user;
 const router = new Router();
+const user = store.getState().user;
 
 let FormElementEmail = new FormElement({
   idInput: "idEmail",
@@ -111,12 +111,13 @@ let ButtonLogOut = new ButtonLink({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const res = authController.logout();
-      if (res.status === 200) {
-        router.go("/");
-      } else {
-        console.log("Не удалось разлогиниться");
-      }
+      authController.logout().then((res) => {
+        if (res.status === 200) {
+          router.go("/");
+        } else {
+          console.log("Не удалось разлогиниться");
+        }
+      });
     },
   },
 });

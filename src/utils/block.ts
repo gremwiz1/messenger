@@ -139,7 +139,9 @@ export default class Block implements IBlock {
     if (!nextProps) {
       return;
     }
-    Object.assign(this.props, nextProps);
+    const { props, children } = this._getChildren(nextProps);
+    Object.assign(this.children, children);
+    Object.assign(this.props, props);
   }
 
   get element() {
