@@ -5,7 +5,6 @@ import { v4 as makeUUID } from "uuid";
 interface IBlock {
   init(): void;
   componentDidMount(): void;
-  dispatchComponentDidMoun(): void;
   componentDidUpdate(
     oldProps: Record<string, any>,
     newProps: Record<string, any>
@@ -40,7 +39,7 @@ export default class Block implements IBlock {
   ) {
     const { children, props } = this._getChildren(propsAndChildren);
 
-    this.children = children;
+    this.children = this._makePropsProxy(children);
 
     this._data = {
       tagName,
@@ -65,19 +64,11 @@ export default class Block implements IBlock {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (
-        Array.isArray(value) &&
-        value.every((v) => v instanceof Block)
-      ) {
-        children[key] = value;
       } else {
         props[key] = value;
       }
     });
-    return {
-      children,
-      props,
-    };
+    return { children, props };
   }
 
   private _registerEvents(eventBus: EventBus): void {
@@ -110,13 +101,11 @@ export default class Block implements IBlock {
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    if (Object.keys(this.children).length)
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   componentDidMount(): void {}
-
-  dispatchComponentDidMoun(): void {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-  }
 
   private _componentDidUpdate(
     oldProps: Record<string, any>,
@@ -124,7 +113,7 @@ export default class Block implements IBlock {
   ) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
-      this._render();
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
@@ -150,6 +139,7 @@ export default class Block implements IBlock {
   private _render() {
     const block: any = this.render();
     this._deleteEvents();
+    this._element.innerHTML = "";
     this._element.appendChild(block);
     this._addEvents();
   }
@@ -195,16 +185,14 @@ export default class Block implements IBlock {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
-      propsAndStubs[key] = `<div data-id="id-${child._id}"></div>`;
+      propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
     const fragment = document.createElement("template") as HTMLTemplateElement;
     fragment.innerHTML = template(propsAndStubs);
 
     Object.values(this.children).forEach((child) => {
-      const stub = fragment.content.querySelector(
-        `[data-id="id-${child._id}"]`
-      );
+      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (!stub) {
         return;
       }

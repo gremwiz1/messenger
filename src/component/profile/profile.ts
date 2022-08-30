@@ -6,6 +6,9 @@ import Button from "../button";
 import ButtonLink from "../button-link";
 import Router from "../../utils/router";
 import store from "../../utils/store";
+import { profileProps } from "../../pages/profile";
+import { changeProfileProps } from "../../pages/change-profile";
+import { changePasswordProps } from "../../pages/change-password";
 
 const router = new Router();
 interface IProfile {
@@ -38,16 +41,24 @@ export class Profile extends Block {
     super("div", { ...props });
   }
   componentDidMount(): void {
+    const user = store.getState().user;
+    if (!user) {
+      router.go("/");
+    }
+    const { pathname } = window.location;
+    if (pathname === "/settings") {
+      this.setProps(profileProps(user));
+    } else if (pathname === "/change-profile") {
+      this.setProps(changeProfileProps(user));
+    } else if (pathname === "/change-password") {
+      this.setProps(changePasswordProps(user));
+    }
     const allErrors = document.querySelectorAll(
       ".form1__error"
     ) as NodeListOf<HTMLElement>;
     Array.from(allErrors).forEach((error) => {
       error.hidden = true;
     });
-    const user = store.getState().user;
-    if (!user) {
-      router.go("/");
-    }
   }
   render() {
     return this.compile(template, this.props);

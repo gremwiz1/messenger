@@ -23,10 +23,10 @@ router
   .use("/", LoginForm, loginProps)
   .use("/500", error, errorPageProps)
   .use("/sign-up", LoginForm, registrationProps)
-  .use("/settings", Profile, profileProps)
+  .use("/settings", Profile, profileProps())
   .use("/messenger", ChatPage, chatsPageProps)
-  .use("/change-password", Profile, changePasswordProps)
-  .use("/change-profile", Profile, changeProfileProps)
+  .use("/change-password", Profile, changePasswordProps())
+  .use("/change-profile", Profile, changeProfileProps())
   .use("/chat", ChatPage, chatPageProps)
   .use("/popup", Popup, popupProps);
 

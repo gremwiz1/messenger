@@ -27,14 +27,13 @@ class UserController {
     }
   }
 
-  public changeUserProfile(data: IProfile) {
+  public async changeUserProfile(data: IProfile) {
     try {
-      return userApi.changeUserProfile(data).then((res: IApi) => {
-        if (res.status == 200) {
-          store.set("user", checkAvatarPath(JSON.parse(res.response)));
-        }
-        return res;
-      });
+      const res: any = await userApi.changeUserProfile(data);
+      if (res.status == 200) {
+        store.set("user", checkAvatarPath(JSON.parse(res.response)));
+      }
+      return res;
     } catch (error) {
       return error;
     }
