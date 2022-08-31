@@ -27,7 +27,7 @@ router
   .use("/messenger", ChatPage, chatsPageProps())
   .use("/change-password", Profile, changePasswordProps())
   .use("/change-profile", Profile, changeProfileProps())
-  .use("/chat", ChatPage, chatPageProps)
+  .use("/chat", ChatPage, chatPageProps())
   .use("/popup", Popup, popupProps);
 
 router.start();

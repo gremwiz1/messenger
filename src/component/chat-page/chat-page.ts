@@ -9,6 +9,7 @@ import ButtonCreateChat from "../button-create-chat";
 import store from "../../utils/store";
 import Router from "../../utils/router";
 import { chatsPageProps } from "../../pages/chats";
+import { chatPageProps } from "../../pages/chat";
 
 const router = new Router();
 
@@ -57,7 +58,14 @@ export class ChatPage extends Block {
       router.go("/");
     }
     const chats = store.getState().chats;
-    this.setProps(chatsPageProps(chats));
+    const chatId = store.getState().activeChat;
+    const { pathname } = window.location;
+    if (pathname === "/messenger") {
+      this.setProps(chatsPageProps(chats));
+    } else if (pathname === "/chat") {
+      this.setProps(chatPageProps(chats, chatId?.chatId));
+    }
+
     const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
     if (chatButtons) {
       chatButtons.style.display = "none";
