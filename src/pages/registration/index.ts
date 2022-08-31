@@ -40,17 +40,19 @@ let ButtonSubmit = new Button({
         phoneValidate(data.phone) &&
         checkRepeatPassword(data.password, data.password_repeat)
       ) {
-        const res = authController.signup(data as IUser);
-        if (res.status === 200) {
-          const res = authController.getUserInfo();
-          if (res.data?.id) {
-            router.go("/messenger");
+        authController.signup(data as IUser).then((res) => {
+          if (res.status === 200) {
+            authController.getUserInfo().then((res) => {
+              if (res.data?.id) {
+                router.go("/messenger");
+              } else {
+                console.log("Не удалось получить информацию о пользователе");
+              }
+            });
           } else {
-            console.log("Не удалось получить информацию о пользователе");
+            console.log("Не удалось зарегистрировать пользователя");
           }
-        } else {
-          console.log("Не удалось зарегистрировать пользователя");
-        }
+        });
       }
     },
   },

@@ -8,6 +8,7 @@ import ButtonDeleteUser from "../button-delete-user";
 import ButtonCreateChat from "../button-create-chat";
 import store from "../../utils/store";
 import Router from "../../utils/router";
+import { chatsPageProps } from "../../pages/chats";
 
 const router = new Router();
 
@@ -42,19 +43,24 @@ interface IChatPage {
   AddButton?: ButtonAddUser;
   DeleteButton?: ButtonDeleteUser;
   ButtonCreateNewChat: ButtonCreateChat;
+  events?: {
+    click?: (e?: Event) => void;
+  };
 }
 export class ChatPage extends Block {
   constructor(props: IChatPage) {
     super("div", props);
   }
   componentDidMount(): void {
-    const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
-    if (chatButtons) {
-      chatButtons.style.display = "none";
-    }
     const user = store.getState().user;
     if (!user) {
       router.go("/");
+    }
+    const chats = store.getState().chats;
+    this.setProps(chatsPageProps(chats));
+    const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
+    if (chatButtons) {
+      chatButtons.style.display = "none";
     }
   }
   render() {

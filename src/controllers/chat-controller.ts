@@ -1,7 +1,7 @@
 import { ChatAPI } from "../api/chat-api";
 import { setAvatarPath, setTime } from "../utils/helpers";
 import store from "../utils/store";
-import { IApi, IChat, IUserInChats } from "../utils/types";
+import { IChat, IUserInChats } from "../utils/types";
 
 const chatsApi = new ChatAPI();
 
@@ -46,11 +46,11 @@ class ChatController {
 
   public async addUserInChat(data: IUserInChats) {
     try {
-      return chatsApi.addUserInChat(data).then((res: IApi) => {
-        if (res.data.reason) throw new Error(res.data.reason);
-        this.getChats();
-        return res;
-      });
+      const res: any = await chatsApi.addUserInChat(data);
+      if (res.status !== 200)
+        throw new Error("Не получилось добавить пользователя в чат");
+      const chats = this.getChats();
+      return chats;
     } catch (error) {
       console.log(error.message);
     }
@@ -58,11 +58,11 @@ class ChatController {
 
   public async deleteUserFromChat(data: IUserInChats) {
     try {
-      return chatsApi.deleteUserFromChat(data).then((res: IApi) => {
-        if (res.data.reason) throw new Error(res.data.reason);
-        this.getChats();
-        return res;
-      });
+      const res: any = await chatsApi.deleteUserFromChat(data);
+      if (res.status !== 200)
+        throw new Error("Не получилось удалить пользователя из чата");
+      const chats = await this.getChats();
+      return chats;
     } catch (error) {
       console.log(error.message);
     }
@@ -70,11 +70,10 @@ class ChatController {
 
   public async createChat(data: IChat) {
     try {
-      return chatsApi.createChat(data).then((res: IApi) => {
-        if (res.status !== 200) throw new Error("Не получилось создать чат");
-        this.getChats();
-        return res;
-      });
+      const res: any = await chatsApi.createChat(data);
+      if (res.status !== 200) throw new Error("Не получилось создать чат");
+      const chats = await this.getChats();
+      return chats;
     } catch (error) {
       console.log(error.message);
     }
@@ -82,11 +81,10 @@ class ChatController {
 
   public async getTokenChat(chatId: number) {
     try {
-      return chatsApi.getTokenChat(chatId).then((res: IApi) => {
-        if (res.status !== 200) throw new Error("Не получилось взять токен");
-        const result = JSON.parse(res.response);
-        return result.token;
-      });
+      const res: any = chatsApi.getTokenChat(chatId);
+      if (res.status !== 200) throw new Error("Не получилось взять токен");
+      const result = JSON.parse(res.response);
+      return result.token;
     } catch (error) {
       console.log(error.message);
     }
