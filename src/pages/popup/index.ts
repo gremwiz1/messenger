@@ -1,7 +1,6 @@
 import Button from "../../component/button";
 import userController from "../../controllers/user-controller";
 import Router from "../../utils/router";
-import store from "../../utils/store";
 
 const router = new Router();
 let ButtonSubmit = new Button({
@@ -10,13 +9,13 @@ let ButtonSubmit = new Button({
     click: function (e: Event) {
       e.preventDefault();
       const formData = new FormData(e.target as HTMLFormElement);
-      const res = userController.changeUserAvatar({ avatar: formData });
-      if (res.status === 200) {
-        store.set("user", res.data);
-        router.go("/settings");
-      } else {
-        console.log("Не удалось изменить аватар");
-      }
+      userController.changeUserAvatar({ avatar: formData }).then((res) => {
+        if (res.status === 200) {
+          router.go("/settings");
+        } else {
+          console.log("Не удалось изменить аватар");
+        }
+      });
     },
   },
 });

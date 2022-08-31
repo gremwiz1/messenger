@@ -75,14 +75,14 @@ export function changePasswordProps(user?: IUserModel) {
           checkRepeatPassword(data.newPassword, data.repeatPassword) &&
           passwordValidate(data.newPassword)
         ) {
-          const res = userController.changeUserPassword(data as IPassword);
-          if (res.status === 200) {
-            router.go("/settings");
-          } else {
-            console.log("Не удалось сменить пароль");
-          }
+          userController.changeUserPassword(data as IPassword).then((res) => {
+            if (res.status === 200) {
+              router.go("/settings");
+            } else {
+              console.log("Не удалось сменить пароль");
+            }
+          });
         }
-        console.log(data);
       },
     },
   });
