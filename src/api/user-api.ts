@@ -10,9 +10,9 @@ export class UserAPI {
       data: JSON.stringify(data),
     });
   }
-  public changeUserAvatar(data: IAvatar) {
+  public changeUserAvatar(data: FormData) {
     return settingsAPIInstance.put("/user/profile/avatar", {
-      data: JSON.stringify(data),
+      data: data,
     });
   }
   public changeUserPassword(data: IPassword) {

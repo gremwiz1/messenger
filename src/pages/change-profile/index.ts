@@ -13,6 +13,7 @@ import Router from "../../utils/router";
 import userController from "../../controllers/user-controller";
 import { IProfile, IUserModel } from "../../utils/types";
 import authController from "../../controllers/auth-controller";
+import Avatar from "../../component/avatar";
 
 export function changeProfileProps(user?: IUserModel) {
   const router = new Router();
@@ -234,8 +235,9 @@ export function changeProfileProps(user?: IUserModel) {
     },
   });
 
-  let Avatar = new ButtonLink({
+  let Avatar1 = new Avatar({
     className: "avatar",
+    url: user?.avatar || "",
     events: {
       click: function (e: Event) {
         e.preventDefault();
@@ -260,6 +262,6 @@ export function changeProfileProps(user?: IUserModel) {
     ButtonSubmit: ButtonSubmit,
     ButtonLinkBack: ButtonLinkBack,
     ButtonLogOut: ButtonLogOut,
-    Avatar: Avatar,
+    Avatar: Avatar1,
   };
 }

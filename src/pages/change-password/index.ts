@@ -6,6 +6,7 @@ import { IPassword, IUserModel } from "../../utils/types";
 import Router from "../../utils/router";
 import ButtonLink from "../../component/button-link";
 import authController from "../../controllers/auth-controller";
+import Avatar from "../../component/avatar";
 
 export function changePasswordProps(user?: IUserModel) {
   const router = new Router();
@@ -104,8 +105,9 @@ export function changePasswordProps(user?: IUserModel) {
     },
   });
 
-  let Avatar = new ButtonLink({
+  let Avatar1 = new Avatar({
     className: "avatar",
+    url: user?.avatar || "",
     events: {
       click: function (e: Event) {
         e.preventDefault();
@@ -121,6 +123,6 @@ export function changePasswordProps(user?: IUserModel) {
     FormRepeatPassword: FormRepeatPassword,
     ButtonSubmit: ButtonSubmit,
     ButtonLogOut: ButtonLogOut,
-    Avatar: Avatar,
+    Avatar: Avatar1,
   };
 }

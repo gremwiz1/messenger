@@ -4,10 +4,11 @@ import ButtonLink from "../../component/button-link";
 import Router from "../../utils/router";
 import authController from "../../controllers/auth-controller";
 import { IUserModel } from "../../utils/types";
+import Avatar from "../../component/avatar";
 
 export function profileProps(user?: IUserModel) {
   const router = new Router();
-
+  console.log(user);
   let FormElementEmail = new FormElement({
     idInput: "idEmail",
     labelText: "Email",
@@ -122,8 +123,9 @@ export function profileProps(user?: IUserModel) {
     },
   });
 
-  let Avatar = new ButtonLink({
+  let Avatar1 = new Avatar({
     className: "avatar",
+    url: user?.avatar || "",
     events: {
       click: function (e: Event) {
         e.preventDefault();
@@ -149,6 +151,6 @@ export function profileProps(user?: IUserModel) {
     ButtonLink: LinkButton,
     ButtonLinkBack: ButtonLinkBack,
     ButtonLogOut: ButtonLogOut,
-    Avatar: Avatar,
+    Avatar: Avatar1,
   };
 }

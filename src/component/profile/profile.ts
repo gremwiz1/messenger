@@ -9,6 +9,7 @@ import store from "../../utils/store";
 import { profileProps } from "../../pages/profile";
 import { changeProfileProps } from "../../pages/change-profile";
 import { changePasswordProps } from "../../pages/change-password";
+import Avatar from "../avatar";
 
 const router = new Router();
 interface IProfile {
@@ -31,7 +32,7 @@ interface IProfile {
   ButtonLink?: ButtonLink;
   ButtonLinkBack: ButtonLink;
   ButtonLogOut: ButtonLink;
-  Avatar: ButtonLink;
+  Avatar: Avatar;
   events?: {
     click?: (e?: Event) => void;
   };

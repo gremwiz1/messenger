@@ -65,7 +65,6 @@
 }
 .input__file {
   opacity: 0;
-  visibility: hidden;
   position: absolute;
 }
 .input__file-button-text {

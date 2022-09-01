@@ -8,8 +8,11 @@ let ButtonSubmit = new Button({
   events: {
     click: function (e: Event) {
       e.preventDefault();
-      const formData = new FormData(e.target as HTMLFormElement);
-      userController.changeUserAvatar({ avatar: formData }).then((res) => {
+      const formData = new FormData(
+        document.querySelector("form") as HTMLFormElement
+      );
+
+      userController.changeUserAvatar(formData).then((res) => {
         if (res.status === 200) {
           router.go("/settings");
         } else {

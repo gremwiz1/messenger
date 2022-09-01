@@ -1,12 +1,12 @@
 import { UserAPI } from "../api/user-api";
 import { checkAvatarPath } from "../utils/helpers";
 import store from "../utils/store";
-import { IAvatar, ILogin, IPassword, IProfile } from "../utils/types";
+import { ILogin, IPassword, IProfile } from "../utils/types";
 
 const userApi = new UserAPI();
 
 class UserController {
-  public async changeUserAvatar(form: IAvatar) {
+  public async changeUserAvatar(form: FormData) {
     try {
       const res: any = await userApi.changeUserAvatar(form);
       if (res.status == 200) {

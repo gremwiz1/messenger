@@ -10,7 +10,7 @@ enum Methods {
 interface IOptions {
   method?: Methods;
   timeout?: number;
-  data?: XMLHttpRequestBodyInit;
+  data?: string | FormData;
   contentType?: string;
 }
 
@@ -52,8 +52,8 @@ export class HTTPTransport {
     options: IOptions = { method: Methods.GET },
     timeout = 5000
   ) => {
-    const { method, data, contentType = "application/json" } = options;
-
+    const { method, contentType = "application/json" } = options;
+    let data = options.data;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(
@@ -63,9 +63,10 @@ export class HTTPTransport {
       xhr.withCredentials = true;
       xhr.setRequestHeader("credentials", "include");
       xhr.setRequestHeader("mode", "cors");
-      if (!(data instanceof FormData))
+      if (data && !(data instanceof FormData)) {
         xhr.setRequestHeader("content-type", contentType);
-
+        data = JSON.stringify(data);
+      }
       xhr.onload = () => {
         resolve(xhr);
       };
@@ -78,7 +79,7 @@ export class HTTPTransport {
       if (method === Methods.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data as XMLHttpRequestBodyInit);
+        xhr.send(data);
       }
     });
   };
