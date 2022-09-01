@@ -8,7 +8,6 @@ import Avatar from "../../component/avatar";
 
 export function profileProps(user?: IUserModel) {
   const router = new Router();
-  console.log(user);
   let FormElementEmail = new FormElement({
     idInput: "idEmail",
     labelText: "Email",
@@ -126,6 +125,7 @@ export function profileProps(user?: IUserModel) {
   let Avatar1 = new Avatar({
     className: "avatar",
     url: user?.avatar || "",
+    noImage: user?.avatar === "../../static/logo.png" ? true : false,
     events: {
       click: function (e: Event) {
         e.preventDefault();

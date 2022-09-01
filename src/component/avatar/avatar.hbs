@@ -1,1 +1,5 @@
-<img class={{className}} src={{url}} alt="аватар" />
+{{#if noImage}}
+  <div class="noAvatar"></div>
+{{else}}
+  <img class={{className}} src={{url}} alt="аватар" />
+{{/if}}

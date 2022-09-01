@@ -108,6 +108,7 @@ export function changePasswordProps(user?: IUserModel) {
   let Avatar1 = new Avatar({
     className: "avatar",
     url: user?.avatar || "",
+    noImage: user?.avatar === "../../static/logo.png" ? true : false,
     events: {
       click: function (e: Event) {
         e.preventDefault();

@@ -5,6 +5,7 @@ import template from "./avatar.hbs";
 interface IAvatarProps {
   className: string;
   url: string;
+  noImage: boolean;
   events?: {
     click?: (e?: Event) => void;
   };
