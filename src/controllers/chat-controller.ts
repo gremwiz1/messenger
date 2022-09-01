@@ -81,7 +81,7 @@ class ChatController {
 
   public async getTokenChat(chatId: number) {
     try {
-      const res: any = chatsApi.getTokenChat(chatId);
+      const res: any = await chatsApi.getTokenChat(chatId);
       if (res.status !== 200) throw new Error("Не получилось взять токен");
       const result = JSON.parse(res.response);
       return result.token;

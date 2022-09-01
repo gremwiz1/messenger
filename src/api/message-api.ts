@@ -17,7 +17,11 @@ export default class MessageAPI {
   }
 
   private _send(data: IMessageFormModel) {
-    return this.socket.send(JSON.stringify(data));
+    if (this.socket.readyState) {
+      return this.socket.send(JSON.stringify(data));
+    } else {
+      setTimeout(this._send, 1000, data);
+    }
   }
 
   public send({ type, content }: IMessageFormModel) {

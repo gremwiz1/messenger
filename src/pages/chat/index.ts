@@ -75,6 +75,11 @@ export function chatPageProps(dataChats?: IChats[], idActiveChat?: number) {
             content: messageText,
           });
           messageInput.value = "";
+          ChatController.getChats().then((res) => {
+            if (res?.status == 200) {
+              router.go("/chat");
+            }
+          });
         } else {
           console.log("Message не может быть пустым");
         }

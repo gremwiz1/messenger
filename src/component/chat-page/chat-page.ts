@@ -10,6 +10,7 @@ import store from "../../utils/store";
 import Router from "../../utils/router";
 import { chatsPageProps } from "../../pages/chats";
 import { chatPageProps } from "../../pages/chat";
+import MessagesController from "../../controllers/message-controller";
 
 const router = new Router();
 
@@ -64,6 +65,7 @@ export class ChatPage extends Block {
       this.setProps(chatsPageProps(chats));
     } else if (pathname === "/chat") {
       this.setProps(chatPageProps(chats, chatId?.chatId));
+      setTimeout(() => MessagesController.openWSS(), 100);
     }
 
     const chatButtons = document.querySelector(".chat-buttons") as HTMLElement;
