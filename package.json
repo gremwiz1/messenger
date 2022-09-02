@@ -6,7 +6,9 @@
     "test": "./node_modules/.bin/mocha",
     "dev": "parcel --no-cache ./src/index.html -p 3000",
     "build": "parcel build ./src/index.html",
-    "start": "npm run build && node ./server.js"
+    "start": "npm run build && node ./server.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
