@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "---",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha",
     "dev": "parcel --no-cache ./src/index.html -p 3000",
     "build": "parcel build ./src/index.html",
     "start": "npm run build && node ./server.js"
@@ -21,18 +21,27 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "@babel/register": "7.14.5",
     "@parcel/config-default": "^2.3.0",
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.14",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "autoprefixer": "^10.4.2",
+    "chai": "^4.3.6",
     "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.2",
+    "mocha": "^10.0.0",
     "parcel": "^2.3.1",
     "parcel-transformer-hbs": "^1.0.4",
     "stylelint": "^14.9.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1"
   },
   "dependencies": {
     "handlebars": "^4.7.7",
