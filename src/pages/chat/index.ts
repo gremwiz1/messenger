@@ -190,6 +190,7 @@ export function chatPageProps(dataChats?: IChats[], idActiveChat?: number) {
     AddButton: AddButton,
     DeleteButton: DeleteButton,
     ButtonCreateNewChat: ButtonCreateNewChat,
+    noImage: avatarChat === "../../static/logo.png" ? true : false,
     events: {
       click: function (event: Event) {
         event.preventDefault();

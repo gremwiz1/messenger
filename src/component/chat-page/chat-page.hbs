@@ -6,7 +6,11 @@
     <div class="chats">
       {{#each chats}}
         <div class="chat" id={{id}}>
-          <img class="chat__avatar" src="{{imageUrl}}" />
+          {{#if noImageChat}}
+            <div class="noAvatarChat"></div>
+          {{else}}
+            <img class="chat__avatar" src="{{imageUrl}}" />
+          {{/if}}
           <div class="chat__content">
             <p class="chat__title">{{title}}</p>
             <div class="chat__last">
@@ -28,7 +32,11 @@
     <section class="section-right">
       <div class="chat__top">
         <div class="chat__top_left">
-          <img class="chat__top_avatar" src={{imageUrlChat}} alt="Аватар" />
+          {{#if noImage}}
+            <div class="noAvatarImage"></div>
+          {{else}}
+            <img class="chat__top_avatar" src={{imageUrlChat}} alt="Аватар" />
+          {{/if}}
           <p class="chat__top_title">{{titleChat}}</p>
         </div>
         {{{ButtonLink1}}}

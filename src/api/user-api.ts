@@ -1,6 +1,6 @@
 import { BaseUrl } from "../utils/const";
 import { HTTPTransport } from "../utils/http-transport";
-import { IAvatar, IId, ILogin, IPassword, IProfile } from "../utils/types";
+import { IId, ILogin, IPassword, IProfile } from "../utils/types";
 
 const settingsAPIInstance = new HTTPTransport(BaseUrl);
 

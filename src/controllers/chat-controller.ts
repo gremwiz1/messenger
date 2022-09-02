@@ -21,6 +21,7 @@ class ChatController {
             timeLastMessage: setTime(item.last_message.time),
             isNewMessages: true,
             countNewMessages: item.unread_count,
+            noImageChat: item.avatar ? false : true,
           };
         } else {
           return {
@@ -34,6 +35,7 @@ class ChatController {
               : "",
             isNewMessages: false,
             countNewMessages: item.unread_count,
+            noImageChat: item.avatar ? false : true,
           };
         }
       });

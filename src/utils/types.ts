@@ -94,4 +94,5 @@ export interface IChats {
   timeLastMessage: string;
   isNewMessages: boolean;
   countNewMessages: number;
+  noImageChat: boolean;
 }

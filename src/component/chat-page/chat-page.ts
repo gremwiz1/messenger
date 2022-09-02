@@ -22,6 +22,7 @@ interface IChat {
   timeLastMessage: string;
   isNewMessages: boolean;
   countNewMessages?: number;
+  noImageChat: boolean;
 }
 interface IChatMessages {
   isMyMessage: Boolean;
@@ -45,6 +46,7 @@ interface IChatPage {
   AddButton?: ButtonAddUser;
   DeleteButton?: ButtonDeleteUser;
   ButtonCreateNewChat: ButtonCreateChat;
+  noImage?: boolean;
   events?: {
     click?: (e?: Event) => void;
   };
