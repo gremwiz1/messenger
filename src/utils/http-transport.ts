@@ -10,41 +10,63 @@ enum Methods {
 interface IOptions {
   method?: Methods;
   timeout?: number;
-  headers?: Record<string, string>;
-  data?: XMLHttpRequestBodyInit;
+  data?: string | FormData;
+  contentType?: string;
 }
 
 export class HTTPTransport {
+  baseUrl: string;
+  constructor(baseUrl: string) {
+    this.baseUrl = baseUrl;
+  }
   get = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.GET }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.GET },
+      options.timeout
+    );
 
   post = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.POST }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.POST },
+      options.timeout
+    );
 
   put = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.PUT }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.PUT },
+      options.timeout
+    );
 
   delete = (url: string, options: IOptions = {}) =>
-    this.request(url, { ...options, method: Methods.DELETE }, options.timeout);
+    this.request(
+      `${this.baseUrl}${url}`,
+      { ...options, method: Methods.DELETE },
+      options.timeout
+    );
 
   request = (
     url: string,
     options: IOptions = { method: Methods.GET },
     timeout = 5000
   ) => {
-    const { headers = {}, method, data } = options;
-
+    const { method, contentType = "application/json" } = options;
+    let data = options.data;
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(
         method as string,
         method === Methods.GET && !!data ? url + queryStringify(data) : url
       );
-
-      Object.keys(headers).forEach((key) => {
-        xhr.setRequestHeader(key, headers[key]);
-      });
-
+      xhr.withCredentials = true;
+      xhr.setRequestHeader("credentials", "include");
+      xhr.setRequestHeader("mode", "cors");
+      if (data && !(data instanceof FormData)) {
+        xhr.setRequestHeader("content-type", contentType);
+        data = JSON.stringify(data);
+      }
       xhr.onload = () => {
         resolve(xhr);
       };
@@ -57,7 +79,7 @@ export class HTTPTransport {
       if (method === Methods.GET || !data) {
         xhr.send();
       } else {
-        xhr.send(data as XMLHttpRequestBodyInit);
+        xhr.send(data);
       }
     });
   };

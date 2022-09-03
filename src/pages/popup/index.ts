@@ -1,14 +1,28 @@
-import Popup from "../../component/popup";
-import { renderBlock } from "../../utils/render-block";
-import ButtonLink from "../../component/button-link";
+import Button from "../../component/button";
+import userController from "../../controllers/user-controller";
+import Router from "../../utils/router";
 
-let Button = new ButtonLink({
+const router = new Router();
+let ButtonSubmit = new Button({
   title: "Поменять",
-  className: "form__button",
+  events: {
+    click: function (e: Event) {
+      e.preventDefault();
+      const formData = new FormData(
+        document.querySelector("form") as HTMLFormElement
+      );
+
+      userController.changeUserAvatar(formData).then((res) => {
+        if (res.status === 200) {
+          router.go("/settings");
+        } else {
+          console.log("Не удалось изменить аватар");
+        }
+      });
+    },
+  },
 });
 
-const popup = new Popup({
-  Button: Button,
-});
-
-renderBlock("#app", popup);
+export const popupProps = {
+  Button: ButtonSubmit,
+};

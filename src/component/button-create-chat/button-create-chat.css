@@ -1,0 +1,29 @@
+.button-create-chat {
+  padding: 15px;
+  display: flex;
+  border: none;
+  cursor: pointer;
+  transition: 1s;
+  background: none;
+  align-items: center;
+}
+.button-create-chat:hover {
+  opacity: 0.7;
+}
+.button-create-chat_picture {
+  height: 22px;
+  width: 22px;
+  background-image: url("../../../static/add-button.png");
+  margin-right: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.button-create-chat_text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--dark-main-fonts-color);
+}

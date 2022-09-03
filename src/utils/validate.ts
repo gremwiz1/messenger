@@ -3,39 +3,68 @@ const validate = {
   email: /\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6}/,
   firstName: /^[A-ZА-Я][a-zа-я]+$/,
   secondName: /^[A-ZА-Я][a-zа-я]+$/,
+  displayName: /^[A-ZА-Я][a-zа-я]+$/,
   phone: /^[+]?[0-9]{10,15}$/,
   password: /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[0-9a-zA-Z!@#$%^&*]{8,40}$/,
   message: /[^\s]/,
 };
 
-export const loginValidate = function (value: string) {
+export const loginValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.login.test(value);
 };
 
-export const emailValidate = function (value: string) {
+export const emailValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.email.test(value);
 };
 
-export const firstNameValidate = function (value: string) {
+export const firstNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.firstName.test(value);
 };
 
-export const secondNameValidate = function (value: string) {
+export const secondNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.secondName.test(value);
 };
 
-export const phoneValidate = function (value: string) {
+export const displayNameValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
+  return validate.displayName.test(value);
+};
+
+export const phoneValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.phone.test(value);
 };
 
-export const passwordValidate = function (value: string) {
+export const passwordValidate = function (value: string | undefined) {
+  if (!value) {
+    return false;
+  }
   return validate.password.test(value);
 };
 
 export const checkRepeatPassword = function (
-  password: string,
-  passwordRepeat: string
+  password: string | undefined,
+  passwordRepeat: string | undefined
 ) {
+  if (!password || !passwordRepeat) {
+    return false;
+  }
   return password === passwordRepeat;
 };
 

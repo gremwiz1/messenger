@@ -2,21 +2,22 @@
   <section class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Загрузите файл</h2>
-      <div class="input__wrapper">
+      <form class="input__wrapper" enctype="multipart/form-data" method="post">
         <input
-          name="file"
+          name="avatar"
           type="file"
-          name="file"
-          id="input__file"
+          id="avatar"
           class="input input__file"
+          accept="image/*"
           multiple
         />
         <label for="input__file" class="input__file-button">
           <span class="input__file-button-text">Выбрать файл на компьютере</span>
         </label>
-      </div>
-      {{{Button}}}
-      <span class="popup__error">Нужно выбрать файл</span>
+        {{{Button}}}
+        <span class="popup__error" id="popup__error">Нужно выбрать файл</span>
+      </form>
+
     </div>
   </section>
 

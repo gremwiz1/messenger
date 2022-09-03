@@ -66,6 +66,19 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.noAvatarChat {
+  height: 47px;
+  width: 47px;
+  border-radius: 50%;
+  background-image: url(../../../static/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: 1s;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: none;
+}
 .chat__content {
   display: flex;
   flex-direction: column;
@@ -179,6 +192,25 @@
   margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.noAvatarImage {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: var(--avatar-bg-color);
+  background-image: url(../../../static/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: 1s;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+}
+.noAvatarImage:hover {
+  opacity: 0.7;
 }
 .chat__top_title {
   font-weight: 600;
@@ -342,4 +374,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+.chat-buttons {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
 }

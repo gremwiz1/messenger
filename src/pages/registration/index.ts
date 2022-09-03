@@ -1,7 +1,8 @@
-import LoginForm from "../../component/login-form";
-import { renderBlock } from "../../utils/render-block";
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
+import authController from "../../controllers/auth-controller";
+import Router from "../../utils/router";
+import { IUser } from "../../utils/types";
 import {
   checkRepeatPassword,
   emailValidate,
@@ -12,6 +13,7 @@ import {
   secondNameValidate,
 } from "../../utils/validate";
 
+const router = new Router();
 let ButtonSubmit = new Button({
   title: "Зарегистрироваться",
   events: {
@@ -21,16 +23,37 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        email: formData.get("email"),
-        login: formData.get("login"),
-        first_name: formData.get("firstName"),
-        second_name: formData.get("secondName"),
-        password: formData.get("password"),
-        phone: formData.get("phone"),
-        password_repeat: formData.get("passwordRepeat"),
+        email: formData.get("email")?.toString(),
+        login: formData.get("login")?.toString(),
+        first_name: formData.get("firstName")?.toString(),
+        second_name: formData.get("secondName")?.toString(),
+        password: formData.get("password")?.toString(),
+        phone: formData.get("phone")?.toString(),
+        password_repeat: formData.get("passwordRepeat")?.toString(),
       };
-
-      console.log(data);
+      if (
+        emailValidate(data.email) &&
+        loginValidate(data.login) &&
+        firstNameValidate(data.first_name) &&
+        secondNameValidate(data.second_name) &&
+        passwordValidate(data.password) &&
+        phoneValidate(data.phone) &&
+        checkRepeatPassword(data.password, data.password_repeat)
+      ) {
+        authController.signup(data as IUser).then((res) => {
+          if (res.status === 200) {
+            authController.getUserInfo().then((res) => {
+              if (res.data?.id) {
+                router.go("/messenger");
+              } else {
+                console.log("Не удалось получить информацию о пользователе");
+              }
+            });
+          } else {
+            console.log("Не удалось зарегистрировать пользователя");
+          }
+        });
+      }
     },
   },
 });
@@ -162,7 +185,7 @@ let InputRepeatPassword = new InputElement({
   },
 });
 
-const registration = new LoginForm({
+export const registrationProps = {
   formTitle: "Регистрация",
   InputEmail: InputEmail,
   InputLogin: InputLogin,
@@ -171,16 +194,7 @@ const registration = new LoginForm({
   InputPhone: InputPhone,
   InputPassword: InputPassword,
   InputRepeatPassword: InputRepeatPassword,
-  link: "../login/index.html",
+  link: "/",
   linkText: "Войти",
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", registration);
-
-const allErrors: NodeListOf<HTMLElement> = document.querySelectorAll(
-  ".form1__error"
-) as NodeListOf<HTMLElement>;
-Array.from(allErrors).forEach((error) => {
-  error.hidden = true;
-});
+};

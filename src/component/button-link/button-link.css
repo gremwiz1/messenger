@@ -60,3 +60,51 @@
 .chat__top_button:hover {
   opacity: 0.7;
 }
+.form__link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  color: var(--red-link-color);
+  text-align: left;
+  cursor: pointer;
+  transition: 1s;
+  border: none;
+}
+.form__link:hover {
+  opacity: 0.7;
+}
+.section-left__link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: right;
+  color: var(--light-grey-color);
+  cursor: pointer;
+  transition: 1s;
+  padding-top: 21px;
+  margin-bottom: 23px;
+  background: none;
+  border: none;
+  width: 100%;
+}
+.section-left__link:hover {
+  opacity: 0.7;
+}
+.avatar {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  background: var(--avatar-bg-color);
+  background-image: url(../../../static/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: 1s;
+  margin-bottom: 21px;
+  border: none;
+}
+.avatar:hover {
+  opacity: 0.7;
+}

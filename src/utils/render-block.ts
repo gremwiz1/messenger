@@ -1,6 +1,4 @@
-import Block from "./block";
-
-export function renderBlock(rootSelector: string, component: Block) {
+export function renderBlock(rootSelector: string, component: any) {
   const root = document.querySelector(rootSelector);
   if (!root) {
     throw new Error("Root not found!");

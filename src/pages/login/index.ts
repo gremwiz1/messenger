@@ -1,8 +1,10 @@
-import LoginForm from "../../component/login-form";
-import { renderBlock } from "../../utils/render-block";
 import Button from "../../component/button";
 import InputElement from "../../component/input-element";
+import authController from "../../controllers/auth-controller";
+import Router from "../../utils/router";
+import { IAuthData } from "../../utils/types";
 
+const router = new Router();
 let ButtonSubmit = new Button({
   title: "Авторизироваться",
   events: {
@@ -12,11 +14,24 @@ let ButtonSubmit = new Button({
         document.querySelector("form") as HTMLFormElement
       );
       const data = {
-        login: formData.get("login"),
-        password: formData.get("password"),
+        login: formData.get("login")?.toString(),
+        password: formData.get("password")?.toString(),
       };
-
-      console.log(data);
+      if (data.login && data.password) {
+        authController.signin(data as IAuthData).then((res) => {
+          if (res.status == 200) {
+            authController.getUserInfo().then((res) => {
+              if (res.status == 200) {
+                router.go("/messenger");
+              } else {
+                console.log("Не удалось получить информацию о пользователе");
+              }
+            });
+          } else {
+            console.log("Авторизироваться не получилось");
+          }
+        });
+      }
     },
   },
 });
@@ -37,13 +52,11 @@ let InputPassword = new InputElement({
   spanId: "password-input-error-avtorization",
 });
 
-const login = new LoginForm({
+export const loginProps = {
   formTitle: "Вход",
   InputLogin: InputLogin,
   InputPassword: InputPassword,
-  link: "../registration/index.html",
+  link: "/sign-up",
   linkText: "Нет аккаунта?",
   ButtonSubmit: ButtonSubmit,
-});
-
-renderBlock("#app", login);
+};
