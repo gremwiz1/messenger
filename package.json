@@ -2,6 +2,11 @@
   "name": "my-webpack-project",
   "version": "1.0.0",
   "description": "My webpack project",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test && npm run eslint && npm run stylelint"
+    }
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "dev": "parcel --no-cache ./src/index.html -p 3000",
@@ -45,8 +50,9 @@
     "css-loader": "^6.7.1",
     "eslint-config-airbnb": "^19.0.4",
     "express": "^4.17.2",
-    "html-webpack-plugin": "^5.5.0",
     "handlebars-loader": "1.7.2",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "mini-css-extract-plugin": "^2.6.1",
     "mocha": "^10.0.0",
     "parcel": "^2.3.1",
